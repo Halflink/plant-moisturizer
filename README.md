@@ -21,6 +21,15 @@ To solve this I picked up the idea to create an automated watering system.
 - Check water level in water container
 - Air temperature check 
 - Browser based interface showing all parameters
+
+####Pi 4 Model B choice
+The Pi 3 Model B is still available and might be a cheaper choice. The reason I opted for the Pi4B is that this Pi 
+should be able to handle more ampere, and as I plan to use 4-5 sensors, a web service and a relay hat I might need 
+that extras.
+
+####DC-DC step-down converter
+The pumps need roughly 12 volts to operate properly (I plan to water a lot of plants). The Pi & sensors need a stable 5 volts. 
+For this I plan to use a DC-DC step-down converter to create a stable 5 volt for the Pi. 
  
 ###PI INSTALLATION NOTES
 - Set up SSH 
