@@ -33,6 +33,7 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
  
 ###PI INSTALLATION NOTES
 - Set up SSH 
+- Set up [I2C](https://wiki.52pi.com/index.php?title=DockerPi_4_Channel_Relay_SKU:_EP-0099) for relay hat
 - Set up WIFI
 - Set up shared folder 
 - Use init.json to set up the GPIO ports
