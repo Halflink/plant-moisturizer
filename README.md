@@ -33,10 +33,12 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
  
 ###PI INSTALLATION NOTES
 - Set up SSH 
-- Set up [I2C](https://wiki.52pi.com/index.php?title=DockerPi_4_Channel_Relay_SKU:_EP-0099) for relay hat
+- I2C for relay HAT:
+    - Set up [I2C](https://wiki.52pi.com/index.php?title=DockerPi_4_Channel_Relay_SKU:_EP-0099)
+    - Install smbus package for python `sudo apt-get install python3-smbus`
 - Set up WIFI
 - Set up shared folder 
-- Use init.json to set up the GPIO ports
+- Use init.json to set up the HAT, GPIO ports etc. 
 
 ###PARTS LIST*
 - 1x Raspberry Pi 4 Model B 2GB RAM
