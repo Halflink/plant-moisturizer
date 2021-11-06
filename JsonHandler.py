@@ -8,24 +8,20 @@ class JsonHandler:
         with open("init.json") as jsonFile:
             init_info = json.load(jsonFile)
             jsonFile.close()
-
+            self.debug_mode = init_info['Debug mode'].upper() == "YES"
             self.device_bus = init_info['Relay hat']['Device bus']
             hex_s = init_info['Relay hat']['Device Address']
             self.device_addr = int(hex_s, 16)
-            self.pump_a = init_info['Pumps']['Pump a']
-            self.pump_b = init_info['Pumps']['Pump b']
-            self.pump_c = init_info['Pumps']['Pump c']
-            self.pump_d = init_info['Pumps']['Pump d']
-            self.pump_time = init_info['Pumps']['Pump time']
+            self.pump_settings = init_info['Relay hat']['Pumps']
 
     def print_settings(self):
+        print("debug_mode: %s " % self.debug_mode)
         print("device_bus: %.1f " % self.device_bus)
-        print("device_addr: " + self.device_addr)
-        print("pump_a: %.1f " % self.pump_a)
-        print("pump_b: %.1f " % self.pump_b)
-        print("pump_c: %.1f " % self.pump_c)
-        print("pump_d: %.1f " % self.pump_d)
-        print("pump_time: %.1f " % self.pump_time)
+        print("device_addr: " + hex(self.device_addr))
+        no_of_pumps = len(self.pump_settings    )
+        for element in range(no_of_pumps):
+            print("Pump ID: %.1f " % self.pump_settings[element]['ID'])
+            print("Pump time: %.1f " % self.pump_settings[element]['Pump time'])
 
 
 if __name__ == '__main__':

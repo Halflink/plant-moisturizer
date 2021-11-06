@@ -1,17 +1,24 @@
 {
+	"Debug mode": "Yes",
 	"Relay hat": {
 		"Device bus": 1,
-		"Device Address": "0x10"
-	},
-	"Pumps": {
-		"Pump a": 1,
-		"Pump b": 2,
-		"Pump c": 3,
-		"Pump d": -1,
-		"Pump time": 10
+		"Device Address": "0x10",
+		"Pumps": [
+			{
+				"ID": 1,
+				"Pump time": 10
+			},
+			{
+				"ID": 2,
+				"Pump time": 10
+			},
+			{
+				"ID": 3,
+				"Pump time": 10
+			}
+		]
 	}
 }
 
 
     
-     

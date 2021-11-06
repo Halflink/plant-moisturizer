@@ -1,29 +1,28 @@
 class MainClass:
 
     # Import
-    import time as time
-    import smbus
     import sys
     from JsonHandler import JsonHandler
+    from Pumps import Pumps
 
     # Variables
 
     def __init__(self):
 
-        self.json_handler = self.JsonHandler()
-        self.device_bus = self.json_handler.device_bus
-        self.device_addr = self.json_handler.device_addr
-        self.bus = self.smbus.SMBus(self.device_bus)
+        json_handler = self.JsonHandler()
+        self.debug_mode = json_handler.debug_mode
+        device_bus = json_handler.device_bus
+        device_addr = json_handler.device_addr
+        pump_settings = json_handler.pump_settings
+        self.pumps = self.Pumps(device_addr, device_bus, pump_settings, self.debug_mode)
 
-    def relay_test(self):
+    def pump_test(self):
         while True:
             try:
-                for i in range(1, 5):
-                    print("Relay = %.1f " % i)
-                    self.bus.write_byte_data(self.device_addr, i, 0xFF)
-                    self.time.sleep(2)
-                    self.bus.write_byte_data(self.device_addr, i, 0x00)
-                    self.time.sleep(2)
+                for i in range(self.pumps.length()):
+                    if self.debug_mode:
+                        print("Pump = %.1f " % i)
+                    self.pumps.water_plants(i)
             except KeyboardInterrupt as e:
                 print("Quit the Loop")
                 self.sys.exit()
@@ -32,5 +31,5 @@ class MainClass:
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     mainClass = MainClass()
-    mainClass.relay_test()
+    mainClass.pump_test()
 
