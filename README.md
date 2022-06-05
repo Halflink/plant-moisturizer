@@ -32,14 +32,16 @@ The pumps need roughly 12 volts to operate properly (I plan to water a lot of pl
 For this I plan to use a DC-DC step-down converter to create a stable 5 volt for the Pi. 
  
 ###PI INSTALLATION NOTES
-* Set up SSH 
+* Connect remotely so we can use the raspberry headless
+  * Set up SSH 
+  * Set up WIFI
+  * Install GIT `sudo apt-get install git`
 * I2C for relay HAT:
   * Set up [I2C](https://wiki.52pi.com/index.php?title=DockerPi_4_Channel_Relay_SKU:_EP-0099)
   * Install smbus package for python `sudo apt-get install python3-smbus`
-* Set up WIFI
-* Set up shared folder 
 * Use init.json to set up the HAT, GPIO ports etc.
 * Set up MCP3008
+* Install FLASK `sudo apt-get install python3-flask`
 
 ###PARTS LIST*
 * 1x Raspberry Pi 4 Model B 2GB RAM

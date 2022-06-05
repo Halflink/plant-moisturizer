@@ -28,7 +28,6 @@ class MainClass:
                 self.sys.exit()
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     mainClass = MainClass()
     mainClass.pump_test()
