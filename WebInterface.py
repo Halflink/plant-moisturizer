@@ -17,7 +17,7 @@ def add_label(current_time):
 
 def add_value(value):
     rounded_value = 10 * round(value, 3)
-    values.append(value)
+    values.append(rounded_value)
     if len(values) > 11:
         values.pop(0)
 
