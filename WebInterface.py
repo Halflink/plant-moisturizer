@@ -1,11 +1,11 @@
 from MCP3008 import MCP3008
-from main import mainClass
+from main import MainClass
 from flask import Flask, render_template, request
 from flask import render_template, redirect, url_for, Markup
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-mainClass = mainClass()
+mainClass = MainClass()
 
 labels = []
 values = []
