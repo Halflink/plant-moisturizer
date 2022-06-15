@@ -2,6 +2,7 @@ class MCP3008:
     # Class for MCP3008 ADC
 
     from spidev import SpiDev
+    from datetime import datetime
 
     def __init__(self, bus=0, device=0):
         self.bus, self.device = bus, device
@@ -29,7 +30,7 @@ class MCP3008:
         data = ((adc[1] & 3) << 8) + adc[2]
         return data
 
-    def read_volts(self, channel=0):
+    def read_sensor(self, channel=0):
         """
         read the digital data from MCP3008 and convert it to voltage
             MCP3008: 10bit ADC -> value in number range 0-1023
@@ -43,6 +44,13 @@ class MCP3008:
     def close(self):
         self.spi.close()
 
+    def get_sensor_timestamp(self):
+
+        now = self.datetime.now()
+        current_time = now.strftime("%d-%m-%y %H:%M:%S")
+        sensor = [current_time, self.read_sensor(0), self.read_sensor(1), self.read_sensor(2)]
+        return sensor
+
 
 if __name__ == '__main__':
     import sys
@@ -51,8 +59,8 @@ if __name__ == '__main__':
     mcp3008 = MCP3008()
     while True:
         try:
-            volts = mcp3008.read_volts(channel=0)
-            print("Applied voltage: %.2f" % volts)
+            volts = mcp3008.get_sensor_timestamp()
+            print(volts)
             time.sleep(1)
         except KeyboardInterrupt as e:
             print("Quit the Loop")
