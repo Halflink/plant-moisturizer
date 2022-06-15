@@ -47,7 +47,7 @@ class MCP3008:
     def get_sensor_timestamp(self):
 
         now = self.datetime.now()
-        current_time = now.strftime("%d-%m-%y %H:%M:%S")
+        current_time = now.strftime("%H:%M:%S")
         sensor = [current_time, self.read_sensor(channel=0), self.read_sensor(channel=1), self.read_sensor(channel=2)]
         return sensor
 
