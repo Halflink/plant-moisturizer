@@ -41,16 +41,16 @@ def home():
     line_labels = labels
     line_values = values
 
-  #  if request.method == 'POST':
-  #      if request.form.get('action1') == 'VALUE1':
-  #          pass  # do something
-  #      elif request.form.get('action2') == 'VALUE2':
-  #          pass  # do something else
-  #      else:
-  #          pass  # unknown
-  #  elif request.method == 'GET':
-  #      return render_template('home.html', title='Moisture sensor', max=30, labels=line_labels,
-  #                         values=line_values, form=form)
+    if request.method == 'POST':
+        if request.form.get('action1') == 'VALUE1':
+            pass  # do something
+        elif request.form.get('action2') == 'VALUE2':
+            pass  # do something else
+        else:
+            pass  # unknown
+    elif request.method == 'GET':
+        return render_template('home.html', title='Moisture sensor', max=30, labels=line_labels,
+                           values=line_values, form=form)
 
     return render_template('home.html', title='Moisture sensor', max=30, labels=line_labels,
                            values=line_values)
