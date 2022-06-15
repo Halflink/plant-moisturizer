@@ -33,7 +33,7 @@ def index():
     return 'Hello world'
 
 
-@app.route("/home", methods=['GET', 'POST'])
+@app.route("/home")
 def home():
     sensor_timestamp = mcp3008.get_sensor_timestamp()
     add_label(sensor_timestamp[0])
