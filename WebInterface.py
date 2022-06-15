@@ -1,6 +1,7 @@
 from MCP3008 import MCP3008
 from flask import Flask, render_template, request
 from flask import render_template, redirect, url_for, Markup
+
 app = Flask(__name__)
 app.config["DEBUG"] = True
 mcp3008 = MCP3008()
@@ -50,7 +51,7 @@ def home():
             pass  # unknown
     elif request.method == 'GET':
         return render_template('home.html', title='Moisture sensor', max=30, labels=line_labels,
-                           values=line_values)
+                               values=line_values)
 
     return render_template('home.html', title='Moisture sensor', max=30, labels=line_labels,
                            values=line_values)
@@ -58,4 +59,3 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001, host='0.0.0.0')
-
