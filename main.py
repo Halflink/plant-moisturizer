@@ -18,6 +18,10 @@ class MainClass:
         self.pumps = self.Pumps(device_addr, device_bus, pump_settings, self.debug_mode)
         self.sensors = self.MCP3008()
 
+    def activate_pump(self, pump_index):
+        if 0 <= pump_index < self.pumps.length():
+            self.pumps.water_plants(pump_index)
+
     def pump_test(self):
         while True:
             try:

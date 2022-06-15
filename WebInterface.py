@@ -45,9 +45,9 @@ def home():
 
     if request.method == 'POST':
         if request.form.get('action1') == 'VALUE1':
-            pass  # do something
+            mainClass.activate_pump(0)
         elif request.form.get('action2') == 'VALUE2':
-            pass  # do something else
+            mainClass.activate_pump(1)
         else:
             pass  # unknown
     elif request.method == 'GET':
