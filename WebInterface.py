@@ -13,7 +13,7 @@ def add_label(current_time):
     if len(labels) > 11:
         labels.pop(0)
 
-def add_value(value)
+def add_value(value):
     rounded_value = round(value, 2)
     values.append(value)
     if len(values) > 11:
