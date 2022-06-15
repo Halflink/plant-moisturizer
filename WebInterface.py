@@ -8,16 +8,19 @@ mcp3008 = MCP3008()
 labels = []
 values = []
 
+
 def add_label(current_time):
     labels.append(current_time)
     if len(labels) > 11:
         labels.pop(0)
 
+
 def add_value(value):
-    rounded_value = round(value, 2)
+    rounded_value = 10 * round(value, 3)
     values.append(value)
     if len(values) > 11:
         values.pop(0)
+
 
 colors = [
     "#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA",
@@ -37,7 +40,7 @@ def home():
     add_value(sensor_timestamp[1])
     line_labels = labels
     line_values = values
-    return render_template('home.html', title='Moisture sensor', max=4, labels=line_labels,
+    return render_template('home.html', title='Moisture sensor', max=40, labels=line_labels,
                            values=line_values)
 
 
