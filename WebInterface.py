@@ -44,10 +44,12 @@ def home():
     line_values = values
 
     if request.method == 'POST':
-        if request.form.get('action1') == 'VALUE1':
+        if request.form.get('action1') == 'Activate Pump 1':
             mainClass.activate_pump(0)
-        elif request.form.get('action2') == 'VALUE2':
+        elif request.form.get('action2') == 'Activate Pump 2':
             mainClass.activate_pump(1)
+        elif request.form.get('action3') == 'Activate Pump 3':
+            mainClass.activate_pump(2)
         else:
             pass  # unknown
     elif request.method == 'GET':
