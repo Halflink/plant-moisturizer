@@ -1,10 +1,11 @@
 from MCP3008 import MCP3008
+from main import mainClass
 from flask import Flask, render_template, request
 from flask import render_template, redirect, url_for, Markup
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-mcp3008 = MCP3008()
+mainClass = mainClass()
 
 labels = []
 values = []
@@ -36,7 +37,7 @@ def index():
 
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-    sensor_timestamp = mcp3008.get_sensor_timestamp()
+    sensor_timestamp = mainClass.sensors.get_sensor_timestamp()
     add_label(sensor_timestamp[0])
     add_value(sensor_timestamp[1])
     line_labels = labels

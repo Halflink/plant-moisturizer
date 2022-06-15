@@ -38,7 +38,7 @@ class MCP3008:
                    0  ->  0v
                 1023  ->  vmax
         """
-        value = (self.read(channel=0) / 1023.0 * 3.3)
+        value = (self.read(channel) / 1023.0 * 3.3)
         return value
 
     def close(self):

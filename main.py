@@ -4,6 +4,7 @@ class MainClass:
     import sys
     from JsonHandler import JsonHandler
     from Pumps import Pumps
+    from MCP3008 import mcp3008
 
     # Variables
 
@@ -15,6 +16,7 @@ class MainClass:
         device_addr = json_handler.device_addr
         pump_settings = json_handler.pump_settings
         self.pumps = self.Pumps(device_addr, device_bus, pump_settings, self.debug_mode)
+        self.sensors = self.mcp3008()
 
     def pump_test(self):
         while True:
