@@ -37,7 +37,7 @@ def home():
     add_value(sensor_timestamp[1])
     line_labels = labels
     line_values = values
-    return render_template('home.html', title='Bitcoin Monthly Price in USD', max=17000, labels=line_labels,
+    return render_template('home.html', title='Moisture sensor', max=4, labels=line_labels,
                            values=line_values)
 
 
