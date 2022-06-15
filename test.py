@@ -1,5 +1,14 @@
-# import datetime module from datetime
 from datetime import datetime
-current_time = datetime.now()
-date = current_time.strftime("%d-%m-%y %H:%M:%S")
-print(date)
+import time
+
+labels = []
+
+for i in range(100):
+    now = datetime.now()
+    current_time = now.strftime("%d-%m-%y %H:%M:%S")
+    labels.append(current_time)
+    if len(labels) > 11:
+        labels.pop(0)
+    print(labels)
+    time.sleep(1)
+

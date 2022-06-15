@@ -48,7 +48,7 @@ class MCP3008:
 
         now = self.datetime.now()
         current_time = now.strftime("%d-%m-%y %H:%M:%S")
-        sensor = [current_time, self.read_sensor(0), self.read_sensor(1), self.read_sensor(2)]
+        sensor = [current_time, self.read_sensor(channel=0), self.read_sensor(channel=1), self.read_sensor(channel=2)]
         return sensor
 
 
