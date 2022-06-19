@@ -17,7 +17,9 @@
 				"Pump time": 10
 			}
 		]
-	}
+	},
+	"Log path": "./log/",
+	"Max log lines": 1000
 }
 
 

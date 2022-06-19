@@ -1,14 +1,8 @@
-from datetime import datetime
-import time
+from Log import Log
 
-labels = []
+log = Log()
 
-for i in range(100):
-    now = datetime.now()
-    current_time = now.strftime("%d-%m-%y %H:%M:%S")
-    labels.append(current_time)
-    if len(labels) > 11:
-        labels.pop(0)
-    print(labels)
-    time.sleep(1)
-
+for i in range(300):
+    line = "line " + str(i)
+    log.add_line(line)
+    print(str(log.current_file_length))

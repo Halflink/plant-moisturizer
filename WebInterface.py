@@ -37,7 +37,7 @@ def index():
 
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-    sensor_timestamp = mainClass.sensors.get_sensor_timestamp()
+    sensor_timestamp = mainClass.sensors.get_sensor_readout()
     add_label(sensor_timestamp[0])
     add_value(sensor_timestamp[1])
     line_labels = labels

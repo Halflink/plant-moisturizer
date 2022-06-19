@@ -4,11 +4,15 @@ class MCP3008:
     from spidev import SpiDev
     from datetime import datetime
 
-    def __init__(self, bus=0, device=0):
-        self.bus, self.device = bus, device
+    # Variables
+    read_outs = []
+
+    def __init__(self, log, bus=0, device=0, readout_history_length=10):
+        self.bus, self.device, self.readout_history_length = bus, device, readout_history_length
         self.spi = self.SpiDev()
         self.open()
         self.spi.max_speed_hz = 1000000  # 1MHz
+        self.log = log
 
     def open(self):
         # connect spi object to spi device
@@ -44,12 +48,25 @@ class MCP3008:
     def close(self):
         self.spi.close()
 
-    def get_sensor_timestamp(self):
-
+    def get_sensor_readout(self):
+        """
+        Get a timestamp and a readout from all sensors. Return them as an array
+        """
         now = self.datetime.now()
         current_time = now.strftime("%H:%M:%S")
         sensor = [current_time, self.read_sensor(channel=0), self.read_sensor(channel=1), self.read_sensor(channel=2)]
         return sensor
+
+    def set_readouts(self):
+        """
+        Read out all sensors and write them to file
+        Also keep last 10 readouts in memory
+        """
+        sensor_readout = self.get_sensor_readout()
+        self.read_outs.append(sensor_readout)
+        self.log.add_line(" / ".join(sensor_readout))
+        if len(self.read_outs) > self.readout_history_length:
+            self.read_outs.pop(0)
 
 
 if __name__ == '__main__':
@@ -59,7 +76,7 @@ if __name__ == '__main__':
     mcp3008 = MCP3008()
     while True:
         try:
-            volts = mcp3008.get_sensor_timestamp()
+            volts = mcp3008.get_sensor_readout()
             print(volts)
             time.sleep(1)
         except KeyboardInterrupt as e:

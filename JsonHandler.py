@@ -13,6 +13,8 @@ class JsonHandler:
             hex_s = init_info['Relay hat']['Device Address']
             self.device_addr = int(hex_s, 16)
             self.pump_settings = init_info['Relay hat']['Pumps']
+            self.log_path = init_info['Log path']
+            self.max_log_lines = init_info['Max log lines']
 
     def print_settings(self):
         print("debug_mode: %s " % self.debug_mode)
@@ -22,6 +24,8 @@ class JsonHandler:
         for element in range(no_of_pumps):
             print("Pump ID: %.1f " % self.pump_settings[element]['ID'])
             print("Pump time: %.1f " % self.pump_settings[element]['Pump time'])
+        print("Log path: %s " % self.log_path)
+        print("Max log lines: %.1f " % self.max_log_lines)
 
 
 if __name__ == '__main__':
