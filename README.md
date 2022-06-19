@@ -1,11 +1,12 @@
 # Plant Moisturizer project
 
 ## PROJECT
-| Project name: | Halflink/plant-moisturizer |
-| ----------- | ----------- |
-| Author: | Jeroen van Zwam |
-| Date: | 2021-10-25 |  
-| Project type: | Raspberry Pi |
+| Project name:    | Halflink/plant-moisturizer |
+|------------------|----------------------------|
+| Author:          | Jeroen van Zwam            |
+| Date:            | 2021-10-25                 |  
+| Last update: | 2022-06-19                 |
+| Project type:    | Raspberry Pi               |
 
 ## Executable
 * Start main.py 
@@ -67,6 +68,7 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
   * Create temperature chart
   * Create current temperature gauge
 * Program heartbeat monitoring
+  * Set-up e-mail server
 * Set-up autostart when booting
 * Create enclosure for all the parts
 * Create PCB for all electronic parts
