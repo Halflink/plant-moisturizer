@@ -1,37 +1,37 @@
-#Plant Moisturizer project
+# Plant Moisturizer project
 
-###PROJECT
+## PROJECT
 | Project name: | Halflink/plant-moisturizer |
 | ----------- | ----------- |
 | Author: | Jeroen van Zwam |
 | Date: | 2021-10-25 |  
 | Project type: | Raspberry Pi |
 
-###Executable
+## Executable
 * Start main.py 
 
-###PROJECT DESCRIPTION
+## PROJECT DESCRIPTION
 This project started with the plants on my balcony needing water every day.
 Although the plants are all low- maintenance plants, the location and type of the balcony means they get dry very quick.
 To solve this I picked up the idea to create an automated watering system.
 
-####Scope
+### Scope
 * Measure moisture levels of plants
 * Regular moisturizing of plants
 * Check water level in water container
 * Air temperature check 
 * Browser based interface showing all parameters
 
-####Pi 4 Model B choice
+### Pi 4 Model B choice
 The Pi 3 Model B is still available and might be a cheaper choice. The reason I opted for the Pi4B is that this Pi 
 should be able to handle more ampere, and as I plan to use 4-5 sensors, a web service and a relay hat I might need 
 that extras.
 
-####DC-DC step-down converter
+### DC-DC step-down converter
 The pumps need roughly 12 volts to operate properly (I plan to water a lot of plants). The Pi & sensors need a stable 5 volts. 
 For this I plan to use a DC-DC step-down converter to create a stable 5 volt for the Pi. 
  
-###PI INSTALLATION NOTES
+## PI INSTALLATION NOTES
 * Connect remotely so we can use the raspberry headless
   * Set up SSH 
   * Set up WIFI
@@ -43,7 +43,7 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
 * Set up MCP3008
 * Install FLASK `sudo apt-get install python3-flask`
 
-###PARTS LIST*
+## PARTS LIST*
 * 1x Raspberry Pi 4 Model B 2GB RAM
 * 1x [MCP3008](https://elektronicavoorjou.nl/product/mcp3008/)
 * 1x [Step-down DC-DC Power Converter](https://www.robotshop.com/eu/en/step-down-dc-dc-power-converter-25w.html)
@@ -57,10 +57,15 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
 
 *) Please note that only the major parts are mentioned
 
-###TO DO LIST
+## TO DO LIST
 * ~~Program relay hat handler~~ 
 * ~~Program MCP3008 handler~~
 * Program web interface
+  * ~~Create moisture chart~~
+  * ~~Create buttons to activate pumps~~
+  * Create humidity chart
+  * Create temperature chart
+  * Create current temperature gauge
 * Program heartbeat monitoring
 * Set-up autostart when booting
 * Create enclosure for all the parts
@@ -69,3 +74,7 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
 * Create tubing system and sprinklers
 * Create water reservoir
 * Find solution for SD card corruption (planning to have a high up-time)
+
+## Progress
+### Added relay hat and MCP3008 chip on breadboard
+![Alt text](/docs/breadboard_MCP3008.jpg "Added MCP3008")
