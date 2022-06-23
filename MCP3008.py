@@ -28,10 +28,13 @@ class MCP3008:
 
     @staticmethod
     def convert_float_list_to_string(read_out):
+        """
+        get a float-list and return it as a string separated by piping
+        :param read_out: list with floats
+        :return: floats rounded on 2 concatenated with piping
+        """
         read_out_string = ''
-        print(len(read_out))
         for i in range(len(read_out)):
-            print(i)
             if read_out_string != '':
                 read_out_string = read_out_string + ' | '
             read_out_string = read_out_string + str(round(read_out[i], 2))
