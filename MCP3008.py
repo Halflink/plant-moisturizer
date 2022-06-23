@@ -16,6 +16,9 @@ class MCP3008:
     def close(self):
         self.spi.close()
 
+    def get_last_read_out_string(self):
+        return self.convert_float_list_to_string(self.read_outs[-1])
+
     def get_sensor_data(self):
         """
         Get a timestamp and a readout from all sensors. Return them as an array
@@ -23,12 +26,13 @@ class MCP3008:
         sensor = [self.read_sensor(channel=0), self.read_sensor(channel=1), self.read_sensor(channel=2)]
         return sensor
 
-    def get_read_out_string(self):
+    @staticmethod
+    def convert_float_list_to_string(read_out):
         read_out_string = ''
-        for i in range(len(self.read_outs)-1):
+        for i in range(len(read_out)-1):
             if read_out_string != '':
                 read_out_string = read_out_string + ' | '
-            read_out_string = read_out_string + str(round(self.read_outs[1], 2))
+            read_out_string = read_out_string + str(round(read_out[i], 2))
         return read_out_string
 
     def open(self):
@@ -69,7 +73,7 @@ class MCP3008:
         """
         sensor_readout = self.get_sensor_data()
         self.read_outs.append(sensor_readout)
-        self.log.add_line('Moisture read-out', ' | ' + self.get_read_out_string())
+        self.log.add_line('Moisture read-out', ' | ' + self.convert_float_list_to_string(sensor_readout))
         if len(self.read_outs) > self.readout_history_length:
             self.read_outs.pop(0)
 
@@ -84,7 +88,7 @@ if __name__ == '__main__':
     while True:
         try:
             mcp3008.set_read_outs()
-            print(mcp3008.get_read_out_string())
+            print(mcp3008.get_last_read_out_string())
             time.sleep(1)
         except KeyboardInterrupt as e:
             print("Quit the Loop")
