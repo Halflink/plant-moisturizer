@@ -14,6 +14,11 @@ class Log:
         self.set_current_file_name()
         self.open_file()
 
+    def get_current_time(self):
+        now = self.datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        return current_time
+
     def set_current_file_name(self):
         """
         Create filename based on datetime and a counter.
@@ -40,8 +45,8 @@ class Log:
         self.set_current_file_name()
         self.open_file()
 
-    def add_line(self, line):
-        write_line = line + '\n'
+    def add_line(self, process_name, line):
+        write_line = self.get_current_time() + ' | ' + process_name + ' | ' + line + '\n'
         self.log_file.write(write_line)
         self.current_file_length = self.current_file_length + 1
         if self.current_file_length == self.log_max_size:

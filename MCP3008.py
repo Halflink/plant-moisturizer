@@ -2,7 +2,6 @@ class MCP3008:
     # Class for MCP3008 ADC
 
     from spidev import SpiDev
-    from datetime import datetime
 
     # Variables
     read_outs = []
@@ -13,6 +12,24 @@ class MCP3008:
         self.open()
         self.spi.max_speed_hz = 1000000  # 1MHz
         self.log = log
+
+    def close(self):
+        self.spi.close()
+
+    def get_sensor_data(self):
+        """
+        Get a timestamp and a readout from all sensors. Return them as an array
+        """
+        sensor = [self.read_sensor(channel=0), self.read_sensor(channel=1), self.read_sensor(channel=2)]
+        return sensor
+
+    def get_read_out_string(self):
+        read_out_string = ''
+        for i in range(len(self.read_outs)-1):
+            if read_out_string != '':
+                read_out_string = read_out_string + ' | '
+            read_out_string = read_out_string + str(round(self.read_outs[1], 2))
+        return read_out_string
 
     def open(self):
         # connect spi object to spi device
@@ -45,21 +62,6 @@ class MCP3008:
         value = (self.read(channel) / 1023.0 * 3.3)
         return value
 
-    def close(self):
-        self.spi.close()
-
-    def get_sensor_data(self):
-        """
-        Get a timestamp and a readout from all sensors. Return them as an array
-        """
-        now = self.datetime.now()
-        current_time = now.strftime("%H:%M:%S")
-        sensor = [current_time, self.read_sensor(channel=0), self.read_sensor(channel=1), self.read_sensor(channel=2)]
-        return sensor
-
-    def get_read_outs(self):
-        return " / ".join(self.read_outs)
-
     def set_read_outs(self):
         """
         Read out all sensors and write them to file
@@ -67,7 +69,7 @@ class MCP3008:
         """
         sensor_readout = self.get_sensor_data()
         self.read_outs.append(sensor_readout)
-        self.log.add_line(" / ".join(sensor_readout))
+        self.log.add_line('Moisture read-out', ' | ' + self.get_read_out_string())
         if len(self.read_outs) > self.readout_history_length:
             self.read_outs.pop(0)
 
@@ -82,7 +84,7 @@ if __name__ == '__main__':
     while True:
         try:
             mcp3008.set_read_outs()
-            print(mcp3008.get_read_outs())
+            print(mcp3008.get_read_out_string())
             time.sleep(1)
         except KeyboardInterrupt as e:
             print("Quit the Loop")
