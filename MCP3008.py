@@ -30,7 +30,7 @@ class MCP3008:
     def convert_float_list_to_string(read_out):
         read_out_string = ''
         print(len(read_out))
-        for i in range(len(read_out)-1):
+        for i in range(len(read_out)):
             print(i)
             if read_out_string != '':
                 read_out_string = read_out_string + ' | '
