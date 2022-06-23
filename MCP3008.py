@@ -48,7 +48,7 @@ class MCP3008:
     def close(self):
         self.spi.close()
 
-    def get_sensor_readout(self):
+    def get_sensor_data(self):
         """
         Get a timestamp and a readout from all sensors. Return them as an array
         """
@@ -57,12 +57,15 @@ class MCP3008:
         sensor = [current_time, self.read_sensor(channel=0), self.read_sensor(channel=1), self.read_sensor(channel=2)]
         return sensor
 
-    def set_readouts(self):
+    def get_read_outs(self):
+        return " / ".join(self.read_outs)
+
+    def set_read_outs(self):
         """
         Read out all sensors and write them to file
         Also keep last 10 readouts in memory
         """
-        sensor_readout = self.get_sensor_readout()
+        sensor_readout = self.get_sensor_data()
         self.read_outs.append(sensor_readout)
         self.log.add_line(" / ".join(sensor_readout))
         if len(self.read_outs) > self.readout_history_length:
@@ -78,8 +81,8 @@ if __name__ == '__main__':
     mcp3008 = MCP3008(log)
     while True:
         try:
-            volts = mcp3008.get_sensor_readout()
-            print(volts)
+            mcp3008.set_read_outs()
+            print(mcp3008.get_read_outs())
             time.sleep(1)
         except KeyboardInterrupt as e:
             print("Quit the Loop")
