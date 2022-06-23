@@ -72,8 +72,10 @@ class MCP3008:
 if __name__ == '__main__':
     import sys
     import time
+    from Log import Log
 
-    mcp3008 = MCP3008()
+    log = Log()
+    mcp3008 = MCP3008(log)
     while True:
         try:
             volts = mcp3008.get_sensor_readout()
