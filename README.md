@@ -60,7 +60,7 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
 
 ## TO DO LIST
 * ~~Program relay hat handler~~ 
-* ~~Program MCP3008 handler~~
+* ~~Program logging~~
 * Program web interface
   * ~~Create moisture chart~~
   * ~~Create buttons to activate pumps~~
