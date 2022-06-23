@@ -78,7 +78,7 @@ class MCP3008:
         """
         sensor_readout = self.get_sensor_data()
         self.read_outs.append(sensor_readout)
-        self.log.add_line('Moisture read-out', ' | ' + self.convert_float_list_to_string(sensor_readout))
+        self.log.add_line('Moisture read-out', self.convert_float_list_to_string(sensor_readout))
         if len(self.read_outs) > self.readout_history_length:
             self.read_outs.pop(0)
 
