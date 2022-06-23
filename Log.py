@@ -28,7 +28,7 @@ class Log:
         counter = 0
         found_viable_name = False
         while not found_viable_name:
-            self.current_file = self.path + now.strftime("%Y-%m-%d %H:%M:%S") + "_" + str(counter) + ".log"
+            self.current_file = self.path + now.strftime("%Y%m%d_%H%M%S") + "_" + str(counter) + ".log"
             if not self.os.path.exists(self.current_file):
                 break
             counter = counter + 1
