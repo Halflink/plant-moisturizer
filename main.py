@@ -25,6 +25,7 @@ class MainClass:
         self.pumps = self.Pumps(device_addr, device_bus, pump_settings, self.debug_mode)
         self.log = self.Log(log_path, max_log_lines)
         self.sensors = self.MCP3008(self.log)
+        self.sensor_thread = self.threading.Thread(target=self.sensor_thread_function, args=("sensor thread",))
 
     def activate_pump(self, pump_index):
         if 0 <= pump_index < self.pumps.length():
@@ -42,11 +43,17 @@ class MainClass:
                 self.sys.exit()
 
     def sensor_thread_function(self, thread_name):
-        pass
+        self.log.add_line("main", "Initializing sensor thread")
+        try:
+            while True:
+                self.sensors.set_read_outs()
+                self.time.sleep(10)
+        except KeyboardInterrupt as e:
+            self.log.add_line("sensor thread", "keyboard interruption")
+            self.sensors.close()
 
     def start_sensor_thread(self):
-        sensor_thread = threading.Thread(target=self.sensor_thread_function, args=("sensor thread", ))
-        sensor_thread.start()
+        self.sensor_thread.start()
 
 
 if __name__ == '__main__':
