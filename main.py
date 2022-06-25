@@ -1,3 +1,6 @@
+import threading
+
+
 class MainClass:
     # Import
     import sys
@@ -5,6 +8,8 @@ class MainClass:
     from Pumps import Pumps
     from MCP3008 import MCP3008
     from Log import Log
+    import threading
+    import time
 
     # Variables
 
@@ -36,7 +41,15 @@ class MainClass:
                 print("Quit the Loop")
                 self.sys.exit()
 
+    def sensor_thread_function(self, thread_name):
+        pass
+
+    def start_sensor_thread(self):
+        sensor_thread = threading.Thread(target=self.sensor_thread_function, args=("sensor thread", ))
+        sensor_thread.start()
+
 
 if __name__ == '__main__':
     mainClass = MainClass()
+    mainClass.start_sensor_thread()
     mainClass.pump_test()

@@ -1,8 +1,16 @@
-from Log import Log
+import threading
+import time
 
-log = Log()
 
-for i in range(300):
-    line = "line " + str(i)
-    log.add_line(line)
-    print(str(log.current_file_length))
+def thread_function(thread_name):
+    print('start thread ' + str(thread_name))
+    time.sleep(10)
+    print('end thread')
+
+
+if __name__ == "__main__":
+    test_thread = threading.Thread(target=thread_function, args=(2,))
+    test_thread.start()
+    for i in range(20):
+        print('count ' + str(i))
+        time.sleep(2)
