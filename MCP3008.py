@@ -2,16 +2,17 @@ class MCP3008:
     # Class for MCP3008 ADC
 
     from spidev import SpiDev
+    import logging
 
     # Variables
     read_outs = []
 
-    def __init__(self, log, bus=0, device=0, readout_history_length=10):
+    def __init__(self, log_name='', bus=0, device=0, readout_history_length=10):
         self.bus, self.device, self.readout_history_length = bus, device, readout_history_length
         self.spi = self.SpiDev()
         self.open()
         self.spi.max_speed_hz = 1000000  # 1MHz
-        self.log = log
+        self.log = self.logging.getLogger(log_name)
 
     def close(self):
         self.spi.close()
@@ -78,7 +79,7 @@ class MCP3008:
         """
         sensor_readout = self.get_sensor_data()
         self.read_outs.append(sensor_readout)
-        self.log.add_line('Moisture read-out', self.convert_float_list_to_string(sensor_readout))
+        self.log.info('Moisture read-out: ' + self.convert_float_list_to_string(sensor_readout))
         if len(self.read_outs) > self.readout_history_length:
             self.read_outs.pop(0)
 
@@ -86,10 +87,9 @@ class MCP3008:
 if __name__ == '__main__':
     import sys
     import time
-    from Log import Log
-
-    log = Log()
-    mcp3008 = MCP3008(log)
+    from Logger import Logger
+    logger = Logger(log_level=10, log_name='test sensor')
+    mcp3008 = MCP3008(log_name='test sensor')
     while True:
         try:
             mcp3008.set_read_outs()

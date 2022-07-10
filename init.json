@@ -1,5 +1,4 @@
 {
-	"Debug mode": "Yes",
 	"Relay hat": {
 		"Device bus": 1,
 		"Device Address": "0x10",
@@ -19,7 +18,7 @@
 		]
 	},
 	"Log path": "./log/",
-	"Max log lines": 1000
+	"Log level": 10
 }
 
 
