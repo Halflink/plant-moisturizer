@@ -42,4 +42,5 @@ def home():
 
 if __name__ == '__main__':
     mainClass.start_sensor_thread()
+    print(mainClass.sensors.time_read_outs)
     app.run(debug=True, port=5001, host='0.0.0.0')
