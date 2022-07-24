@@ -21,7 +21,8 @@ def index():
 @app.route("/home", methods=['GET', 'POST'])
 def home():
     line_labels = mainClass.sensors.time_read_outs
-    line_values = mainClass.sensors.get_sensor_values(0)
+    print(line_labels)
+    line_values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]  # mainClass.sensors.get_sensor_values(0)
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':
@@ -42,5 +43,4 @@ def home():
 
 if __name__ == '__main__':
     mainClass.start_sensor_thread()
-    print(mainClass.sensors.time_read_outs)
     app.run(debug=True, port=5001, host='0.0.0.0')
