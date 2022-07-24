@@ -7,23 +7,6 @@ app = Flask(__name__)
 app.config["DEBUG"] = True
 mainClass = MainClass()
 
-labels = []
-values = []
-
-
-def add_label(current_time):
-    labels.append(current_time)
-    if len(labels) > 11:
-        labels.pop(0)
-
-
-def add_value(value):
-    rounded_value = 10 * round(value, 3)
-    values.append(rounded_value)
-    if len(values) > 11:
-        values.pop(0)
-
-
 colors = [
     "#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA",
     "#ABCDEF", "#DDDDDD", "#ABCABC", "#4169E1",
@@ -37,11 +20,8 @@ def index():
 
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-    sensor_timestamp = mainClass.sensors.get_sensor_readout()
-    add_label(sensor_timestamp[0])
-    add_value(sensor_timestamp[1])
-    line_labels = labels
-    line_values = values
+    line_labels = mainClass.sensors.time_read_outs
+    line_values = mainClass.sensors.get_sensor_values(0)
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':
