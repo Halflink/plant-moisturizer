@@ -8,7 +8,7 @@ class MCP3008:
             y: reading_no (reading 0, reading 1,.... reading 9)
     """
     from spidev import SpiDev
-    import logging
+    import logging3
     import datetime
 
     # Variables
@@ -27,7 +27,8 @@ class MCP3008:
         self.sensor_data_matrix.append(sensor_data)
         if len(self.sensor_data_matrix) > self.readout_history_length:
             self.sensor_data_matrix.pop(0)  # keep only 10 readouts in the array
-        self.sensor_data_times.append(self.get_time_string)
+        now = self.datetime.datetime.now()
+        self.sensor_data_times.append(now.strftime("%H:%M")) # self.get_time_string)
         if len(self.sensor_data_times) > self.readout_history_length:
             self.sensor_data_times.pop(0) # keep only 10 readouts in the array
 
