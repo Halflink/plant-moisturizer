@@ -20,10 +20,10 @@ def index():
 
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-    line_labels = mainClass.sensors.sensor_data_times
+    line_labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]  #mainClass.sensors.sensor_data_times
     print("1")
     print(line_labels)
-    line_values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]  # mainClass.sensors.get_sensor_values(0)
+    line_values = mainClass.sensors.get_sensor_values(1)
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':
@@ -44,4 +44,5 @@ def home():
 
 if __name__ == '__main__':
     mainClass.start_sensor_thread()
+    mainClass.time.sleep(2)
     app.run(debug=True, port=5001, host='0.0.0.0')
