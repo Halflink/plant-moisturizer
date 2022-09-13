@@ -52,6 +52,7 @@ class MainClass:
         try:
             while True:
                 self.sensors.set_read_outs()
+                print(self.sensors.convert_float_list_to_string(self.sensors.get_sensor_values()))
                 self.time.sleep(10)
         except KeyboardInterrupt as e:
             self.log.debug('Sensor thread keyboard interruption')
