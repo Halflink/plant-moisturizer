@@ -35,10 +35,10 @@ def home():
         else:
             pass  # unknown
     elif request.method == 'GET':
-        return render_template('home.html', title='Moisture sensor', max=30, labels=line_labels,
+        return render_template('home.html', title='Moisture sensor', max=100, labels=line_labels,
                                values=line_values)
 
-    return render_template('home.html', title='Moisture sensor', max=30, labels=line_labels,
+    return render_template('home.html', title='Moisture sensor', max=100, labels=line_labels,
                            values=line_values)
 
 

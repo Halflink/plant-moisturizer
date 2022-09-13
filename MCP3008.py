@@ -82,7 +82,9 @@ class MCP3008:
         # extract value from data bytes
         data = ((adc[1] & 3) << 8) + adc[2]
 
-        return data
+        # max value is 100. So divide by 10 and round
+        value = round(data/10, 0)
+        return value
 
     def write_sensor_read_out(self):
         """
