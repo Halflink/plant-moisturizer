@@ -20,7 +20,7 @@ def index():
 
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-    line_labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]  #mainClass.sensors.sensor_data_times
+    line_labels = mainClass.sensors.sensor_data_times
     print("1")
     print(line_labels)
     line_values = mainClass.sensors.get_sensor_data(1)
