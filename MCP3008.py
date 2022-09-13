@@ -58,6 +58,13 @@ class MCP3008:
             values.append(round(sensor_data[sensor_no], 2))
         return values
 
+    def get_sensor_data_times(self):
+        values = []
+        for i in range(len(self.sensor_data_times)):
+            time_stamp = self.sensor_data_times[i]
+            values.append(time_stamp)
+        return values
+
     def get_time_string(self):
         now = self.datetime.datetime.now()
         return now.strftime("%H:%M")
