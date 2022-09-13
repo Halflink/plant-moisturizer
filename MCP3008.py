@@ -35,7 +35,7 @@ class MCP3008:
         self.spi.close()
 
     @staticmethod
-    def convert_float_list_to_string(read_out):
+    def convert_list_to_string(read_out):
         """
         get a float-list and return it as a string separated by piping
         :param read_out: list with floats
@@ -45,11 +45,11 @@ class MCP3008:
         for i in range(len(read_out)):
             if read_out_string != '':
                 read_out_string = read_out_string + ' | '
-            read_out_string = read_out_string + str(round(read_out[i], 2))
+            read_out_string = read_out_string + str(read_out[i])
         return read_out_string
 
     def get_last_read_out_string(self):
-        return self.convert_float_list_to_string(self.sensor_data_matrix[-1])
+        return self.convert_list_to_string(self.sensor_data_matrix[-1])
 
     def get_sensor_data(self, sensor_no):
         values = []
@@ -82,14 +82,7 @@ class MCP3008:
         # extract value from data bytes
         data = ((adc[1] & 3) << 8) + adc[2]
 
-        """    
-        data is converted to voltage. MCP3008: 10bit ADC -> value in number range 0-1023
-            spi value -> voltage
-                   0  ->  0v
-                1023  ->  vmax
-        """
-        value = (data / 1023.0 * 3.3)
-        return value
+        return data
 
     def write_sensor_read_out(self):
         """
@@ -97,7 +90,7 @@ class MCP3008:
         Also keep last 10 readouts in variable
         """
         read_out = [self.read_sensor(channel=0), self.read_sensor(channel=1), self.read_sensor(channel=2)]
-        self.log.info('Moisture read-out: ' + self.convert_float_list_to_string(read_out))
+        self.log.info('Moisture read-out: ' + self.convert_list_to_string(read_out))
         self.add_sensor_data(read_out)
 
 
