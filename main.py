@@ -43,7 +43,7 @@ class MainClass:
                 for i in range(self.pumps.length()):
                     self.log.info('Pump = %.1f ' % i)
                     self.pumps.water_plants(i)
-                    print(self.sensors.get_last_read_out_string())
+                    print(self.sensors.get_sensor_data(1))
             except KeyboardInterrupt as e:
                 print('Quit the Loop')
                 self.sys.exit()
@@ -52,7 +52,7 @@ class MainClass:
         self.log.debug('Initializing ' + thread_name)
         try:
             while True:
-                self.sensors.set_read_outs()
+                self.sensors.write_sensor_read_out()
                 self.time.sleep(10)
         except KeyboardInterrupt as e:
             self.log.debug('Sensor thread keyboard interruption')
