@@ -27,7 +27,8 @@ class MCP3008:
         self.sensor_data_matrix.append(sensor_data)
         if len(self.sensor_data_matrix) > self.readout_history_length:
             self.sensor_data_matrix.pop(0)  # keep only 10 readouts in the array
-        self.sensor_data_times.append(self.get_time_string)
+        now = self.datetime.datetime.now()
+        self.sensor_data_times.append(now.strftime("%H:%M"))
         if len(self.sensor_data_times) > self.readout_history_length:
             self.sensor_data_times.pop(0) # keep only 10 readouts in the array
 
@@ -64,11 +65,6 @@ class MCP3008:
             time_stamp = self.sensor_data_times[i]
             values.append(time_stamp)
         return values
-
-    @staticmethod
-    def get_time_string(self):
-        now = self.datetime.datetime.now()
-        return now.strftime("%H:%M")
 
     def open(self):
         # connect spi object to spi device
