@@ -8,7 +8,7 @@ class MCP3008:
             y: reading_no (reading 0, reading 1,.... reading 9)
     """
     from spidev import SpiDev
-    import logging3
+    import logging
     import datetime
 
     # Variables
