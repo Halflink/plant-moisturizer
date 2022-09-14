@@ -30,8 +30,7 @@
           data : [{% for item in values0 %}
             {{ item }},
             {% endfor %}]
-          },
-          {
+          },{
           fillColor: "rgba(158,204,151,0.2)",
           strokeColor: "rgba(158,204,151,1)",
           pointColor: "rgba(158,204,151,1)",
@@ -40,6 +39,17 @@
           pointHighlightStroke: "rgba(158,204,151,1)",
           bezierCurve : false,
           data : [{% for item in values1 %}
+            {{ item }},
+            {% endfor %}]
+          },{
+          fillColor: "rgba(204,156,151,0.2)",
+          strokeColor: "rgba(204,156,151,1)",
+          pointColor: "rgba(204,156,151,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(204,156,151,1)",
+          bezierCurve : false,
+          data : [{% for item in values2 %}
             {{ item }},
             {% endfor %}]
           }
