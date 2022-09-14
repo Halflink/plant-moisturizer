@@ -84,3 +84,5 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
 ![Breadboard](/docs/breadboard_MCP3008.jpg "Added MCP3008")
 ### moved test set-up to my new test bench
 ![Test bench](/docs/testbench.jpg "Moved to test box")
+### Test set-up at Spark Makers Zone
+![Spark](/docs/at_spark1.jpg "At Spark Makers Zone")
