@@ -81,4 +81,6 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
 
 ## Progress
 ### Added relay hat and MCP3008 chip on breadboard
-![Alt text](/docs/breadboard_MCP3008.jpg "Added MCP3008")
+![Breadboard](/docs/breadboard_MCP3008.jpg "Added MCP3008")
+### moved test set-up to my new test bench
+![Test bench](/docs/testbench.jpg "Moved to test box")
