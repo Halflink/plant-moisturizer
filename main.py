@@ -43,7 +43,7 @@ class MainClass:
                 for i in range(self.pumps.length()):
                     self.log.info('Pump = %.1f ' % i)
                     self.pumps.water_plants(i)
-                    print(self.sensors.get_sensor_data(1))
+                    print(self.sensors.get_last_read_out_string())
             except KeyboardInterrupt as e:
                 print('Quit the Loop')
                 self.sys.exit()

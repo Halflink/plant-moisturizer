@@ -65,6 +65,7 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
 * Program web interface
   * ~~Create moisture chart~~
   * ~~Create buttons to activate pumps~~
+  * ~~read-out sensors in seperate thread~~
   * Create humidity chart
   * Create temperature chart
   * Create current temperature gauge

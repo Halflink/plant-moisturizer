@@ -21,8 +21,6 @@ def index():
 @app.route("/home", methods=['GET', 'POST'])
 def home():
     line_labels = mainClass.sensors.get_sensor_data_times()
-    print("1")
-    print(line_labels)
     line_values = mainClass.sensors.get_sensor_data(1)
 
     if request.method == 'POST':
