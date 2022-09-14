@@ -36,7 +36,6 @@ class HumiditySensor:
 
 if __name__ == '__main__':
     # run this class stand alone o test class
-    import sys
     import time
     from Logger import Logger
 
@@ -50,3 +49,5 @@ if __name__ == '__main__':
             print(humiditySensor.get_temperature_string() + ' ' + humiditySensor.get_humidity_string())
         else:
             print("Failed to retrieve data from humidity sensor")
+
+        time.sleep(3)
