@@ -1,4 +1,4 @@
-from PlantMoistureSensor import PlantMoistureSensor
+from MoistureSensor import MoistureSensor
 from main import MainClass
 from flask import Flask, render_template, request
 from flask import render_template, redirect, url_for, Markup
@@ -20,10 +20,10 @@ def index():
 
 @app.route("/home", methods=['GET', 'POST'])
 def home():
-    line_labels = mainClass.sensors.get_sensor_data_times()
-    line_values0 = mainClass.sensors.get_sensor_data(0)
-    line_values1 = mainClass.sensors.get_sensor_data(1)
-    line_values2 = mainClass.sensors.get_sensor_data(2)
+    line_labels = mainClass.moistureSensors.get_sensor_data_times()
+    line_values0 = mainClass.moistureSensors.get_sensor_data(0)
+    line_values1 = mainClass.moistureSensors.get_sensor_data(1)
+    line_values2 = mainClass.moistureSensors.get_sensor_data(2)
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':

@@ -1,9 +1,10 @@
 class MainClass:
     # Import
     import sys
+    from HumiditySensor import HumiditySensor
     from JsonHandler import JsonHandler
     from Pumps import Pumps
-    from PlantMoistureSensor import PlantMoistureSensor
+    from MoistureSensor import MoistureSensor
     from Logger import Logger
     import logging
     import threading
@@ -30,7 +31,8 @@ class MainClass:
                                 log_name=self.log_name)
 
         # Set Sensors in own thread
-        self.sensors = self.PlantMoistureSensor(log_name=self.log_name)
+        self.moistureSensors = self.MoistureSensor(log_name=self.log_name)
+        self.humiditySensor = self.HumiditySensor(log_name=self.log_name, dht_pin=json_handler.humidity_sensor_gpio)
         self.sensor_thread = self.threading.Thread(target=self.sensor_thread_function, args=("sensor thread",))
 
     def activate_pump(self, pump_index):
@@ -43,7 +45,7 @@ class MainClass:
                 for i in range(self.pumps.length()):
                     self.log.info('Pump = %.1f ' % i)
                     self.pumps.water_plants(i)
-                    print(self.sensors.get_last_read_out_string())
+                    print(self.moistureSensors.get_last_read_out_string())
             except KeyboardInterrupt as e:
                 print('Quit the Loop')
                 self.sys.exit()
@@ -52,11 +54,12 @@ class MainClass:
         self.log.debug('Initializing ' + thread_name)
         try:
             while True:
-                self.sensors.write_sensor_read_out()
+                self.moistureSensors.write_sensor_read_out()
+                self.humiditySensor.write_sensor_read_out()
                 self.time.sleep(10)
         except KeyboardInterrupt as e:
             self.log.debug('Sensor thread keyboard interruption')
-            self.sensors.close()
+            self.moistureSensors.close()
 
     def start_sensor_thread(self):
         self.sensor_thread.start()

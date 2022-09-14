@@ -31,7 +31,7 @@ class HumiditySensor:
             log_text = self.get_temperature_string() + ' ' + self.get_humidity_string()
         else:
             log_text = "Failed to retrieve data from humidity sensor"
-        self.log.info('Moisture read-out: ' + log_text)
+        self.log.info('Humidity sensor read-out: ' + log_text)
 
 
 if __name__ == '__main__':
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     from Logger import Logger
 
     logger = Logger(log_level=10, log_name='test humidity sensor')
-    humiditySensor = HumiditySensor(log_name='test sensor')
+    humiditySensor = HumiditySensor(log_name='test humidity sensor')
 
     while True:
         humiditySensor.write_sensor_read_out()

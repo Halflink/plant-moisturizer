@@ -18,7 +18,8 @@
 		]
 	},
 	"Log path": "./log/",
-	"Log level": 10
+	"Log level": 10,
+	"Humidity Sensor GPIO": 4
 }
 
 

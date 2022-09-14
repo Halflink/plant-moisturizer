@@ -1,4 +1,4 @@
-class PlantMoistureSensor:
+class MoistureSensor:
     """
         Class for MCP3008 ADC
         Using the MCP3008 chip to read out the sensors.
@@ -107,7 +107,7 @@ if __name__ == '__main__':
     from Logger import Logger
 
     logger = Logger(log_level=10, log_name='test sensor')
-    moistureSensor = PlantMoistureSensor(log_name='test sensor')
+    moistureSensor = MoistureSensor(log_name='test sensor')
     while True:
         try:
             moistureSensor.write_sensor_read_out()
