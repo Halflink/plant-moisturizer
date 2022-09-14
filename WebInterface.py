@@ -21,7 +21,9 @@ def index():
 @app.route("/home", methods=['GET', 'POST'])
 def home():
     line_labels = mainClass.sensors.get_sensor_data_times()
-    line_values = mainClass.sensors.get_sensor_data(1)
+    line_values0 = mainClass.sensors.get_sensor_data(0)
+    line_values1 = mainClass.sensors.get_sensor_data(1)
+    line_values2 = mainClass.sensors.get_sensor_data(2)
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':
@@ -34,10 +36,10 @@ def home():
             pass  # unknown
     elif request.method == 'GET':
         return render_template('home.html', title='Moisture sensor', max=100, labels=line_labels,
-                               values=line_values)
+                               values=line_values1)
 
     return render_template('home.html', title='Moisture sensor', max=100, labels=line_labels,
-                           values=line_values)
+                           values0=line_values0, values1=line_values1)
 
 
 if __name__ == '__main__':
