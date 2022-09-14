@@ -44,7 +44,7 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
 * Set up MCP3008
 * Install FLASK `sudo apt-get install python3-flask`
 * Set up DHT22 sensor: https://pimylifeup.com/raspberry-pi-humidity-sensor-dht22/
-  * `sudo pip3 install --install-option="--force-pi" Adafruit_DHT`  
+  * `sudo pip3 install Adafruit_DHT`  
 
 ## PARTS LIST*
 * 1x Raspberry Pi 4 Model B 2GB RAM
