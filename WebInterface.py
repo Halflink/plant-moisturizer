@@ -1,4 +1,4 @@
-from MCP3008 import MCP3008
+from PlantMoistureSensor import PlantMoistureSensor
 from main import MainClass
 from flask import Flask, render_template, request
 from flask import render_template, redirect, url_for, Markup

@@ -1,7 +1,7 @@
-class MCP3008:
+class PlantMoistureSensor:
     """
         Class for MCP3008 ADC
-        Using the MCP3008 chip to rad out the sensors.
+        Using the MCP3008 chip to read out the sensors.
 
         sensor_data_matrix:
             x: sensor_no (sensor 0, sensor 1, sensor 2)
@@ -30,7 +30,7 @@ class MCP3008:
         now = self.datetime.datetime.now()
         self.sensor_data_times.append(now.strftime("%H:%M"))
         if len(self.sensor_data_times) > self.readout_history_length:
-            self.sensor_data_times.pop(0) # keep only 10 readouts in the array
+            self.sensor_data_times.pop(0)  # keep only 10 readouts in the array
 
     def close(self):
         self.spi.close()
@@ -107,11 +107,11 @@ if __name__ == '__main__':
     from Logger import Logger
 
     logger = Logger(log_level=10, log_name='test sensor')
-    mcp3008 = MCP3008(log_name='test sensor')
+    moistureSensor = PlantMoistureSensor(log_name='test sensor')
     while True:
         try:
-            mcp3008.write_sensor_read_out()
-            print(mcp3008.get_last_read_out_string())
+            moistureSensor.write_sensor_read_out()
+            print(moistureSensor.get_last_read_out_string())
             time.sleep(1)
         except KeyboardInterrupt as e:
             print("Quit the Loop")

@@ -3,7 +3,7 @@ class MainClass:
     import sys
     from JsonHandler import JsonHandler
     from Pumps import Pumps
-    from MCP3008 import MCP3008
+    from PlantMoistureSensor import PlantMoistureSensor
     from Logger import Logger
     import logging
     import threading
@@ -30,7 +30,7 @@ class MainClass:
                                 log_name=self.log_name)
 
         # Set Sensors in own thread
-        self.sensors = self.MCP3008(log_name=self.log_name)
+        self.sensors = self.PlantMoistureSensor(log_name=self.log_name)
         self.sensor_thread = self.threading.Thread(target=self.sensor_thread_function, args=("sensor thread",))
 
     def activate_pump(self, pump_index):
