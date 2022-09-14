@@ -25,8 +25,8 @@ class HumiditySensor:
         Read out humidity sensor and write them to file
         Also keep last 10 readouts in variable
         """
-        self.humidity, self.temperature = self.Adafruit_DHT.read_retry(humiditySensor.DHT_SENSOR,
-                                                                       humiditySensor.DHT_PIN)
+        self.humidity, self.temperature = self.Adafruit_DHT.read_retry(self.DHT_SENSOR,
+                                                                       self.DHT_PIN)
         if self.humidity is not None and self.temperature is not None:
             log_text = self.get_temperature_string() + ' ' + self.get_humidity_string()
         else:
