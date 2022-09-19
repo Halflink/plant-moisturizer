@@ -13,18 +13,26 @@
     </div>
 
     <script>
+  var labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+  ];
 
-  const data = {
-    labels: moisture_labels,
+  var data = {
+    labels: labels,
     datasets: [{
       label: 'My First dataset',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: moisture_values0
+      data: [0, 10, 5, 2, 20, 30, 45],
     }]
   };
 
-  const config = {
+  var config = {
     type: 'line',
     data: data,
     options: {}
