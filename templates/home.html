@@ -86,36 +86,46 @@
 
     </script>
 
-    <canvas id="piChart" width="600" height="400"></canvas>
+    <div>
+        <canvas id="myPieChart"></canvas>
+    </div>
+
     <script>
-        var pieData = {
-            labels: [
-                'Red',
-                'Blue',
-                'Yellow'
-            ],
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+        ];
+
+        const data = {
+            labels: labels,
             datasets: [{
-                label: 'My First Dataset',
-                data: [300, 50, 100],
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
-                ],
-                hoverOffset: 4
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0, 10, 5, 2, 20, 30, 45],
             }]
         };
 
-        var pieConfig = {
-            type: 'pie',
-            data: pieData,
+        const config = {
+            type: 'line',
+            data: data,
             options: {}
         };
 
-        var mypie = document.getElementById("piChart").getContext("2d");
-        // draw pie chart
-        var piChart = new Chart(mypie, pieConfig);
+        const myPieChart = new Chart(
+            document.getElementById('myPieChart'),
+            config
+        );
+
     </script>
+
+
+
+
 
     <form method="POST" action="/home">
         <input type="submit" value="Activate Pump 1" name="action1"/>
