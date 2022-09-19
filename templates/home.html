@@ -98,8 +98,9 @@
         ]
       };
 
+     var mypie = document.getElementById("pichart").getContext("2d");
       // draw pie chart
-      new Chart(document.getElementById("pichart").getContext("2d")).Pie(pieData);
+      new Chart(mypie).Pie(pieData);
     </script>
 
     <form method="POST" action="/home">
