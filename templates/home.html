@@ -121,20 +121,9 @@
       // get bar chart canvas
       var mypiechart = document.getElementById("myPieChart").getContext("2d");
 
-      steps = 10
-      max = {{ max }}
       // draw chart
-      var PieChartDemo = new Chart(mypiechart).Pie(pieData, {
-        scaleOverride: true,
-        scaleSteps: steps,
-        scaleStepWidth: Math.ceil(max / steps),
-        scaleStartValue: 0,
-        scaleShowVerticalLines: true,
-        scaleShowGridLines : true,
-        barShowStroke : true,
-        scaleShowLabels: true,
-        bezierCurve: false,
-      });
+      var PieChartDemo = new Chart(mypiechart).Pie(pieData
+      );
     </script>
 
 
