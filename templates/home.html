@@ -123,8 +123,8 @@
 
       steps = 10
       max = {{ max }}
-      // draw bar chart
-      var PieChartDemo = new Chart(mypiechart).Line(pieData, {
+      // draw chart
+      var PieChartDemo = new Chart(mypiechart).Pie(pieData, {
         scaleOverride: true,
         scaleSteps: steps,
         scaleStepWidth: Math.ceil(max / steps),
