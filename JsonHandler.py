@@ -15,6 +15,7 @@ class JsonHandler:
             self.log_path = init_info['Log path']
             self.log_level = init_info['Log level']
             self.humidity_sensor_gpio = init_info['Humidity Sensor GPIO']
+            self.web_port_number = init_info['Web port number']
 
     def print_settings(self):
         print("device_bus: %.1f " % self.device_bus)
@@ -26,6 +27,7 @@ class JsonHandler:
         print("Log path: %s " % self.log_path)
         print("Log level: %.0f " % self.log_level)
         print("Humidity Sensor GPIO: %.0f" % self.humidity_sensor_gpio)
+        print("Web port number: %.0f" % self.web_port_number)
 
 
 if __name__ == '__main__':

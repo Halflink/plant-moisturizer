@@ -53,7 +53,7 @@
             {{ item }},
             {% endfor %}]
           }
-	]
+        ]
       }
 
       Chart.defaults.global.animationSteps = 50;
@@ -85,6 +85,23 @@
       });
 
     </script>
+
+    <canvas id="pichart" width="600" height="400"></canvas>
+    <script>
+      var pieData = {
+        datasets: [{
+            data: [30, 20]
+        }],
+        labels: [
+            'Red',
+            'Gray'
+        ]
+      };
+
+      // draw pie chart
+      new Chart(document.getElementById("pichart").getContext("2d")).Pie(pieData);
+    </script>
+
     <form method="POST" action="/home">
         <input type="submit" value="Activate Pump 1" name="action1"/>
         <input type="submit" value="Activate Pump 2" name="action2" />

@@ -20,10 +20,17 @@ def index():
 
 @app.route("/home", methods=['GET', 'POST'])
 def home():
+    # Line chart data (moisture)
     line_labels = mainClass.moistureSensors.get_sensor_data_times()
     line_values0 = mainClass.moistureSensors.get_sensor_data(0)
     line_values1 = mainClass.moistureSensors.get_sensor_data(1)
     line_values2 = mainClass.moistureSensors.get_sensor_data(2)
+
+    # Doughnut chart data (Temperature)
+    doughnut_labels = ['Temperature', '']
+    doughnut_max = 50
+    doughnut_temp = 30
+    doughnut_untemp = doughnut_max - doughnut_temp
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':
@@ -45,4 +52,4 @@ def home():
 if __name__ == '__main__':
     mainClass.start_sensor_thread()
     mainClass.time.sleep(2)
-    app.run(debug=True, port=5001, host='0.0.0.0')
+    app.run(debug=True, port=mainClass.web_port_number, host='0.0.0.0')

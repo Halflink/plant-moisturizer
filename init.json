@@ -19,7 +19,8 @@
 	},
 	"Log path": "./log/",
 	"Log level": 10,
-	"Humidity Sensor GPIO": 4
+	"Humidity Sensor GPIO": 4,
+	"Web port number": 5001
 }
 
 

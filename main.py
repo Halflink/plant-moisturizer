@@ -35,6 +35,9 @@ class MainClass:
         self.humiditySensor = self.HumiditySensor(log_name=self.log_name, dht_pin=json_handler.humidity_sensor_gpio)
         self.sensor_thread = self.threading.Thread(target=self.sensor_thread_function, args=("sensor thread",))
 
+        # Set web port number
+        self.web_port_number = json_handler.web_port_number
+
     def activate_pump(self, pump_index):
         if 0 <= pump_index < self.pumps.length():
             self.pumps.water_plants(pump_index)
