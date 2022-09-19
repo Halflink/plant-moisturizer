@@ -87,11 +87,11 @@
     </script>
 
     <div>
-        <canvas id="myPieChart"></canvas>
+        <canvas id="myPieChart" width="300" height="300"></canvas>
     </div>
 
     <script>
-        const labels = [
+        const labelsPie = [
             'January',
             'February',
             'March',
@@ -100,8 +100,8 @@
             'June',
         ];
 
-        const data = {
-            labels: labels,
+        const dataPie = {
+            labels: labelsPie,
             datasets: [{
                 label: 'My First dataset',
                 backgroundColor: 'rgb(255, 99, 132)',
@@ -112,11 +112,11 @@
 
         const config = {
             type: 'line',
-            data: data,
+            data: dataPie,
             options: {}
         };
 
-        const myPieChart = new Chart(
+        const myPChart = new Chart(
             document.getElementById('myPieChart'),
             config
         );
