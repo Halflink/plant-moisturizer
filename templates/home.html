@@ -98,18 +98,11 @@
         color: [Red, Gray]
       }
 
-      Chart.defaults.global.animationSteps = 50;
-      Chart.defaults.global.tooltipYPadding = 16;
-      Chart.defaults.global.tooltipCornerRadius = 0;
-      Chart.defaults.global.tooltipTitleFontStyle = "normal";
-      Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
-      Chart.defaults.global.animationEasing = "easeOutBounce";
-      Chart.defaults.global.responsive = false;
-      Chart.defaults.global.scaleLineColor = "black";
-      Chart.defaults.global.scaleFontSize = 16;
 
       // get bar chart canvas
       var mypiechart = document.getElementById("myPieChart").getContext("2d");
+      steps = 10
+      max = {{ max }}
 
       // draw chart
       var PieChartDemo = new Chart(mypiechart).Pie(pieData
