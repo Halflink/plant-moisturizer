@@ -85,7 +85,7 @@
       });
 
     </script>
-
+    <h1>Temperatuur</h1>
     <div>
         <canvas id="myPieChart" width="300" height="300"></canvas>
     </div>
@@ -115,7 +115,8 @@
             data: dataPie,
             options: {}
         };
-
+    </script>
+    <script>
         const myPChart = new Chart(
             document.getElementById('myPieChart'),
             config
@@ -126,7 +127,7 @@
 
 
 
-
+    <h1>Pompbediening</h1>
     <form method="POST" action="/home">
         <input type="submit" value="Activate Pump 1" name="action1"/>
         <input type="submit" value="Activate Pump 2" name="action2" />
