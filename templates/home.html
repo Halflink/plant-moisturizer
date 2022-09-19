@@ -14,12 +14,9 @@
 
     <script>
   var labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
+    {% for item in moisture_labels %}
+            "{{ item }}",
+          {% endfor %}
   ];
 
   var data = {
@@ -28,7 +25,9 @@
       label: 'My First dataset',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
+      data: [{% for item in moisture_values0 %}
+            "{{ item }}",
+          {% endfor %}],
     }]
   };
 
