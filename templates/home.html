@@ -86,7 +86,7 @@
 
     </script>
 
-    <canvas id="pichart" width="600" height="400"></canvas>
+    <canvas id="piChart" width="600" height="400"></canvas>
     <script>
         var pieData = {
             labels: [
@@ -105,9 +105,16 @@
                 hoverOffset: 4
             }]
         };
-        var mypie = document.getElementById("pichart").getContext("2d");
+
+        var pieConfig = {
+            type: 'pie',
+            data: pieData,
+            options: {}
+        };
+
+        var mypie = document.getElementById("piChart").getContext("2d");
         // draw pie chart
-        new Chart(mypie).Pie(pieData);
+        var piChart = new Chart(mypie, pieConfig);
     </script>
 
     <form method="POST" action="/home">
