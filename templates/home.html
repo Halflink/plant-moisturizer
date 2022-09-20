@@ -74,15 +74,15 @@
         <canvas id="temperatureCanvas" width="300" height="300"></canvas>
     </div>
 
-    <!--<script>
-        const data = {
+    <script>
+        const temperature_data = {
           labels: [
             'Red',
             'Blue',
             'Yellow'
           ],
           datasets: [{
-            label: 'My First Dataset',
+            label: 'Temperature',
             data: [300, 50, 100],
             backgroundColor: [
               'rgb(255, 99, 132)',
@@ -93,11 +93,18 @@
           }]
         };
 
-        const config = {
+        const temperature_config = {
             type: 'doughnut',
-            data: data,
+            data: temperature_data,
         };
-    </script>-->
+    </script>
+
+    <script>
+        const temperatureChart = new Chart(
+            document.getElementById('temperatureCanvas'),
+            temperature_config
+        );
+    </script>
 
     <h2>Pump activators</h2>
     <form method="POST" action="/home">
