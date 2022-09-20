@@ -34,8 +34,15 @@
         const config = {
             type: 'line',
             data: data,
-            options: {}
-            };
+            options: {
+                scales: {
+                    y: {
+                        suggestedMin: 50,
+                        suggestedMax: 100
+                    }
+                }
+            }
+        };
     </script>
 
     <script>
