@@ -31,6 +31,9 @@ def home():
     doughnut_max = 50
     doughnut_temp = 30
     doughnut_untemp = doughnut_max - doughnut_temp
+    pie_labels = ["A","B"]
+    pie_values = [30,20]
+    pie_colours = ["#F7464A", "#46BFBD"]
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':
@@ -46,7 +49,8 @@ def home():
                                values=line_values1)
 
     return render_template('home.html', title='Moisture sensor', max=100, labels=line_labels,
-                           values0=line_values0, values1=line_values1, values2=line_values2)
+                           values0=line_values0, values1=line_values1, values2=line_values2,
+                           set=zip(pie_values, pie_labels, pie_colours))
 
 
 if __name__ == '__main__':

@@ -88,15 +88,19 @@
     </script>
     <h1>Temperatuur</h1>
     <div style="height: 300px; width: 300px">
-        <canvas id="temperatureCanvas" width="400" height="400"></canvas>
+        <canvas id="temperatureCanvas" width="300" height="300"></canvas>
     </div>
 
 
     <script>
       var pieData = [
-        { data: [30,20],
-          label: ["a","b"]
-        }
+        {% for pie_values, pie_labels, pie_colours in set %}
+          {
+            value: {{pie_values}},
+            label: "{{pie_labels}}",
+            color : "{{pie_colours}}"
+          },
+        {% endfor %}
       ];
 
       // get bar chart canvas
