@@ -28,7 +28,7 @@ def home():
 
     # Doughnut chart data (Temperature)
     doughnut_max = 50
-    doughnut_temp = 30
+    doughnut_temp = mainClass.humiditySensor.temperature
     doughnut_untemp = doughnut_max - doughnut_temp
     temperature_values = [doughnut_temp, doughnut_untemp]
 
