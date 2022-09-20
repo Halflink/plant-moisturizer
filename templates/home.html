@@ -34,34 +34,7 @@
   var config = {
     type: 'line',
     data: data,
-    options: {
-                responsive: true,
-                legend: {
-                    position: 'bottom',
-                },
-                hover: {
-                    mode: 'label'
-                },
-                scales: {
-                    xAxes: [{
-                            display: true,
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Time'
-                            }
-                        }],
-                    yAxes: [{
-                            display: true,
-                            ticks: {
-                                beginAtZero: true,
-                                steps: 10,
-                                stepValue: 1,
-                                max: 100
-                            }
-                        }]
-                }
-
-            }
+    options: {}
   };
 </script>
 
@@ -86,7 +59,6 @@ steps = 10
         <input type="submit" value="Activate Pump 1" name="action1"/>
         <input type="submit" value="Activate Pump 2" name="action2" />
         <input type="submit" value="Activate Pump 3" name="action3" />
-
     </form>
 </body>
 </html>
