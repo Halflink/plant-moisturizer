@@ -24,10 +24,15 @@
         const data = {
             labels: labels,
             datasets: [{
-                label: 'My First dataset',
+                label: 'Sensor 0',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: [43, 53, 39, 61, 33, 45, 71],
+            },{
+                label: 'Sensor 1',
+                backgroundColor: 'rgb(255, 0, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [13, 23, 19, 31, 13, 25, 51],
             }]
         };
 
@@ -37,7 +42,7 @@
             options: {
                 scales: {
                     y: {
-                        suggestedMin: 50,
+                        suggestedMin: 0,
                         suggestedMax: 100
                     }
                 }
