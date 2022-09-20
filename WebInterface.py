@@ -27,13 +27,10 @@ def home():
     moisture_values2 = mainClass.moistureSensors.get_sensor_data(2)
 
     # Doughnut chart data (Temperature)
-    doughnut_labels = ['Temperature', '']
     doughnut_max = 50
     doughnut_temp = 30
     doughnut_untemp = doughnut_max - doughnut_temp
-    pie_labels = ["A","B"]
-    pie_values = [30,20]
-    pie_colours = ["#F7464A", "#46BFBD"]
+    temperature_values = [doughnut_temp, doughnut_untemp]
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':
@@ -47,11 +44,11 @@ def home():
     elif request.method == 'GET':
         return render_template('home.html', max=100, moisture_labels=moisture_labels,
                                moisture_values0=moisture_values0, moisture_values1=moisture_values1,
-                               moisture_values2=moisture_values2)
+                               moisture_values2=moisture_values2, temperature_values=temperature_values)
 
     return render_template('home.html', max=100, moisture_labels=moisture_labels,
                            moisture_values0=moisture_values0, moisture_values1=moisture_values1,
-                           moisture_values2=moisture_values2)
+                           moisture_values2=moisture_values2, temperature_values=temperature_values)
 
 
 if __name__ == '__main__':

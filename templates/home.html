@@ -82,7 +82,9 @@
           ],
           datasets: [{
             label: 'Temperature',
-            data: [30, 20],
+            data: [{% for item in temperature_values %}
+                    "{{ item }}",
+                    {% endfor %}],
             backgroundColor: [
               'rgb(206, 21, 52)',
               'rgb(214, 208, 214)'
@@ -97,8 +99,10 @@
             options: {
                 rotation: -90,
                 circumference: 180,
-                legend: {
-                    display: false
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 }
             }
         };
