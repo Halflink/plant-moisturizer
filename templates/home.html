@@ -7,9 +7,15 @@
 
 <body>
     <h1>Plant moisturizer dashboard</h1>
-    <div style="height: 300px; width: 500px; margin:10px; float:left">
-        <h2>Moisture sensors read-out</h2>
-        <canvas id="moistureChart" width="500" height="300"></canvas>
+    <div>
+        <div style="height: 300px; width: 500px; margin:10px; float:left">
+            <h2>Moisture sensors read-out</h2>
+            <canvas id="moistureChart" width="500" height="300"></canvas>
+        </div>
+        <div style="height: 300px; width: 300px; margin:10px; float:left">
+            <h2>Temperature read-out</h2>
+            <canvas id="temperatureCanvas" width="300" height="300"></canvas>
+        </div>
     </div>
 
     <script>
@@ -65,13 +71,6 @@
             moisture_config
         );
     </script>
-
-
-    <h2>Temperature read-out</h2>
-    <div style="height: 300px; width: 300px; margin:10px; float:left">
-        <h2>Temperature read-out</h2>
-        <canvas id="temperatureCanvas" width="300" height="300"></canvas>
-    </div>
 
     <script>
         const temperature_data = {
