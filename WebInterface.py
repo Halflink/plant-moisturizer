@@ -46,7 +46,7 @@ def home():
             pass  # unknown
     elif request.method == 'GET':
         return render_template('home.html', title='Moisture sensor', max=100, labels=line_labels,
-                               values=line_values1)
+                               values0=line_values0, values1=line_values1, values2=line_values2)
 
     return render_template('home.html', title='Moisture sensor', max=100, labels=line_labels,
                            values0=line_values0, values1=line_values1, values2=line_values2,

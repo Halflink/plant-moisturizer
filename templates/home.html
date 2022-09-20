@@ -13,12 +13,9 @@
 
     <script>
         const labels = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
+            {% for item in line_labels %}
+            "{{ item }}",
+            {% endfor %}
         ];
 
         const data = {
