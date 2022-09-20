@@ -13,7 +13,7 @@
 
     <script>
         const labels = [
-            {% for item in line_labels %}
+            {% for item in labels %}
             "{{ item }}",
             {% endfor %}
         ];
@@ -24,21 +24,21 @@
                 label: 'Sensor 0',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
-                data: [{% for item in line_values0 %}
+                data: [{% for item in values0 %}
                     "{{ item }}",
                     {% endfor %}],
             },{
                 label: 'Sensor 1',
                 backgroundColor: 'rgb(255, 132, 99)',
                 borderColor: 'rgb(255, 132, 99)',
-                data: [{% for item in line_values1 %}
+                data: [{% for item in values1 %}
                     "{{ item }}",
                     {% endfor %}],
             },{
                 label: 'Sensor 2',
                 backgroundColor: 'rgb(99, 132, 255)',
                 borderColor: 'rgb(99, 132, 255)',
-                data: [{% for item in line_values2 %}
+                data: [{% for item in values2 %}
                     "{{ item }}",
                     {% endfor %}],
             }]
