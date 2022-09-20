@@ -94,8 +94,18 @@
         // bar chart data
       var pieData = {
         labels : [ "Temperature", "_" ],
-        data : [20, 30],
-        color: [Red, Gray]
+
+        datasets : [{
+          //fillColor: "rgba(151,187,205,0.2)",
+          //strokeColor: "rgba(151,187,205,1)",
+          //pointColor: "rgba(151,187,205,1)",
+          //pointStrokeColor: "#fff",
+          //pointHighlightFill: "#fff",
+          //pointHighlightStroke: "rgba(151,187,205,1)",
+          //bezierCurve : false,
+          data : [30, 20 ]
+          }
+        ]
       }
 
       Chart.defaults.global.animationSteps = 50;
