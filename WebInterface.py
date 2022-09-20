@@ -45,11 +45,11 @@ def home():
         else:
             pass  # unknown
     elif request.method == 'GET':
-        return render_template('home.html', title='Moisture sensor', max=100, moisture_labels=moisture_labels,
+        return render_template('home.html', max=100, moisture_labels=moisture_labels,
                                moisture_values0=moisture_values0, moisture_values1=moisture_values1,
                                moisture_values2=moisture_values2)
 
-    return render_template('home.html', title='Moisture sensor', max=100, moisture_labels=moisture_labels,
+    return render_template('home.html', max=100, moisture_labels=moisture_labels,
                            moisture_values0=moisture_values0, moisture_values1=moisture_values1,
                            moisture_values2=moisture_values2)
 

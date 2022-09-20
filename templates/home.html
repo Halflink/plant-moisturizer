@@ -6,9 +6,10 @@
 </head>
 
 <body>
-    <h1>{{ title }}</h1>
+    <h1>Plant moisturizer dashboard</h1>
+    <h2>Moisture sensors read-out</h2>
     <div style="height: 300px; width: 500px">
-        <canvas id="myChart" width="500" height="300"></canvas>
+        <canvas id="moistureChart" width="500" height="300"></canvas>
     </div>
 
     <script>
@@ -59,8 +60,8 @@
     </script>
 
     <script>
-        const myChart = new Chart(
-            document.getElementById('myChart'),
+        const moistureChart = new Chart(
+            document.getElementById('moistureChart'),
             config
         );
     </script>
@@ -68,7 +69,7 @@
 
 
 
-    <h1>Temperatuur</h1>
+    <h2>Temperature read-out</h2>
     <div style="height: 300px; width: 300px">
         <canvas id="temperatureCanvas" width="300" height="300"></canvas>
     </div>
@@ -78,7 +79,7 @@
 
 
 
-    <h1>Pompbediening</h1>
+    <h2>Pump activators</h2>
     <form method="POST" action="/home">
         <input type="submit" value="Activate Pump 1" name="action1"/>
         <input type="submit" value="Activate Pump 2" name="action2" />
