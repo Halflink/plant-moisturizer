@@ -24,17 +24,23 @@
                 label: 'Sensor 0',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
-                data: [43, 53, 39, 61, 33, 45, 71],
+                data: [{% for item in line_values0 %}
+                    "{{ item }}",
+                    {% endfor %}],
             },{
                 label: 'Sensor 1',
                 backgroundColor: 'rgb(255, 132, 99)',
                 borderColor: 'rgb(255, 132, 99)',
-                data: [13, 23, 19, 31, 13, 25, 51],
+                data: [{% for item in line_values1 %}
+                    "{{ item }}",
+                    {% endfor %}],
             },{
                 label: 'Sensor 2',
                 backgroundColor: 'rgb(99, 132, 255)',
                 borderColor: 'rgb(99, 132, 255)',
-                data: [63, 73, 69, 81, 63, 75, 31],
+                data: [{% for item in line_values2 %}
+                    "{{ item }}",
+                    {% endfor %}],
             }]
         };
 
