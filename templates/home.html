@@ -7,13 +7,13 @@
 
 <body>
     <h1>{{ title }}</h1>
-    <div style="height: 300px; width: 300px">
-        <canvas id="myChart" width="300" height="300"></canvas>
+    <div style="height: 300px; width: 500px">
+        <canvas id="myChart" width="500" height="300"></canvas>
     </div>
 
     <script>
         const labels = [
-            {% for item in labels %}
+            {% for item in moisture_labels %}
             "{{ item }}",
             {% endfor %}
         ];
@@ -24,21 +24,21 @@
                 label: 'Sensor 0',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
-                data: [{% for item in values0 %}
+                data: [{% for item in moisture_values0 %}
                     "{{ item }}",
                     {% endfor %}],
             },{
                 label: 'Sensor 1',
                 backgroundColor: 'rgb(255, 132, 99)',
                 borderColor: 'rgb(255, 132, 99)',
-                data: [{% for item in values1 %}
+                data: [{% for item in moisture_values1 %}
                     "{{ item }}",
                     {% endfor %}],
             },{
                 label: 'Sensor 2',
                 backgroundColor: 'rgb(99, 132, 255)',
                 borderColor: 'rgb(99, 132, 255)',
-                data: [{% for item in values2 %}
+                data: [{% for item in moisture_values2 %}
                     "{{ item }}",
                     {% endfor %}],
             }]

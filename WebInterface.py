@@ -21,10 +21,10 @@ def index():
 @app.route("/home", methods=['GET', 'POST'])
 def home():
     # Line chart data (moisture)
-    line_labels = mainClass.moistureSensors.get_sensor_data_times()
-    line_values0 = mainClass.moistureSensors.get_sensor_data(0)
-    line_values1 = mainClass.moistureSensors.get_sensor_data(1)
-    line_values2 = mainClass.moistureSensors.get_sensor_data(2)
+    moisture_labels = mainClass.moistureSensors.get_sensor_data_times()
+    moisture_values0 = mainClass.moistureSensors.get_sensor_data(0)
+    moisture_values1 = mainClass.moistureSensors.get_sensor_data(1)
+    moisture_values2 = mainClass.moistureSensors.get_sensor_data(2)
 
     # Doughnut chart data (Temperature)
     doughnut_labels = ['Temperature', '']
@@ -45,12 +45,13 @@ def home():
         else:
             pass  # unknown
     elif request.method == 'GET':
-        return render_template('home.html', title='Moisture sensor', max=100, labels=line_labels,
-                               values0=line_values0, values1=line_values1, values2=line_values2)
+        return render_template('home.html', title='Moisture sensor', max=100, moisture_labels=moisture_labels,
+                               moisture_values0=moisture_values0, moisture_values1=moisture_values1,
+                               moisture_values2=moisture_values2)
 
-    return render_template('home.html', title='Moisture sensor', max=100, labels=line_labels,
-                           values0=line_values0, values1=line_values1, values2=line_values2,
-                           set=zip(pie_values, pie_labels, pie_colours))
+    return render_template('home.html', title='Moisture sensor', max=100, moisture_labels=moisture_labels,
+                           moisture_values0=moisture_values0, moisture_values1=moisture_values1,
+                           moisture_values2=moisture_values2)
 
 
 if __name__ == '__main__':
