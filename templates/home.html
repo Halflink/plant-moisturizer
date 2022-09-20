@@ -13,14 +13,14 @@
     </div>
 
     <script>
-        const labels = [
+        const moisture_labels = [
             {% for item in moisture_labels %}
             "{{ item }}",
             {% endfor %}
         ];
 
-        const data = {
-            labels: labels,
+        const moisture_data = {
+            labels: moisture_labels,
             datasets: [{
                 label: 'Sensor 0',
                 backgroundColor: 'rgb(255, 99, 132)',
@@ -45,9 +45,9 @@
             }]
         };
 
-        const config = {
+        const moisture_config = {
             type: 'line',
-            data: data,
+            data: moisture_data,
             options: {
                 scales: {
                     y: {
@@ -62,7 +62,7 @@
     <script>
         const moistureChart = new Chart(
             document.getElementById('moistureChart'),
-            config
+            moisture_config
         );
     </script>
 
@@ -74,10 +74,30 @@
         <canvas id="temperatureCanvas" width="300" height="300"></canvas>
     </div>
 
+    <!--<script>
+        const data = {
+          labels: [
+            'Red',
+            'Blue',
+            'Yellow'
+          ],
+          datasets: [{
+            label: 'My First Dataset',
+            data: [300, 50, 100],
+            backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(54, 162, 235)',
+              'rgb(255, 205, 86)'
+            ],
+            hoverOffset: 4
+          }]
+        };
 
-
-
-
+        const config = {
+            type: 'doughnut',
+            data: data,
+        };
+    </script>-->
 
     <h2>Pump activators</h2>
     <form method="POST" action="/home">
