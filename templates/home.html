@@ -34,12 +34,38 @@
   var config = {
     type: 'line',
     data: data,
-    options: {}
+    options: {
+                responsive: true,
+                legend: {
+                    position: 'bottom',
+                },
+                hover: {
+                    mode: 'label'
+                },
+                scales: {
+                    xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Time'
+                            }
+                        }],
+                    yAxes: [{
+                            display: true,
+                            ticks: {
+                                beginAtZero: true,
+                                steps: 10,
+                                stepValue: 1,
+                                max: 100
+                            }
+                        }]
+                }
+
+            }
   };
 </script>
 
 <script>
-
   const myChart = new Chart(
     document.getElementById('myChart'),
     config
