@@ -17,6 +17,12 @@ class HumiditySensor:
     def get_humidity_string(self):
         return "Humidity={0:0.1f}%".format(self.humidity)
 
+    def get_temperature(self):
+        temperature = 0
+        if self.temperature is not None:
+            temperature = self.temperature
+        return temperature
+
     def get_temperature_string(self):
         return "Temp={0:0.1f}*C".format(self.temperature)
 
