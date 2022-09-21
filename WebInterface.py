@@ -28,7 +28,7 @@ def home():
 
     # Doughnut chart data (Temperature)
     doughnut_temp = mainClass.humiditySensor.get_temperature()
-    temperature_values = [doughnut_temp, 20]
+    temperature_values = [doughnut_temp]
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':
