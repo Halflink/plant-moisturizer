@@ -45,12 +45,10 @@
             <h1>Plant moisturizer dashboard</h1>
         </div>
         <div class="col-1">
-            <h2>Moisture sensors read-out</h2>
-            <canvas id="moistureChart" width="100%" height="100%"></canvas>
+            <canvas id="moistureChart"></canvas>
         </div>
         <div class="col-2">
-            <h2>Temperature read-out</h2>
-            <canvas id="temperatureCanvas" width="100%" height="100%"></canvas>
+            <canvas id="temperatureCanvas"></canvas>
         </div>
     </div>
 
@@ -97,6 +95,12 @@
                         suggestedMax: 100
                     }
                 }
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "Moisture sensors read-out"
+                    }
+                }
             }
         };
     </script>
@@ -136,6 +140,10 @@
                 plugins: {
                     legend: {
                         display: false
+                    },
+                    title: {
+                        display: true,
+                        text: "Temperature read-out"
                     }
                 }
             }
