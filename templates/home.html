@@ -81,22 +81,22 @@
             labels: moisture_labels,
             datasets: [{
                 label: 'Sensor 0',
-                backgroundColor: 'rgba(206, 21, 52, 0.3)',
-                borderColor: 'rgba(206, 21, 52, 1)',
+                backgroundColor: 'rgba(226, 241, 105, 0.3)',
+                borderColor: 'rgba(226, 241, 105, 1)',
                 data: [{% for item in moisture_values0 %}
                     "{{ item }}",
                     {% endfor %}],
             },{
                 label: 'Sensor 1',
-                backgroundColor: 'rgba(122, 193, 239, 0.3)',
-                borderColor: 'rgba(122, 193, 239, 1)',
+                backgroundColor: 'rgba(241, 226, 105, 0.3)',
+                borderColor: 'rgba(241, 226, 105, 1)',
                 data: [{% for item in moisture_values1 %}
                     "{{ item }}",
                     {% endfor %}],
             },{
                 label: 'Sensor 2',
-                backgroundColor: 'rgba(9, 170, 10, 0.3)',
-                borderColor: 'rgba(9, 170, 10, 1)',
+                backgroundColor: 'rgba(226, 105, 241, 0.3)',
+                borderColor: 'rgba(226, 105, 241, 1)',
                 data: [{% for item in moisture_values2 %}
                     "{{ item }}",
                     {% endfor %}],
