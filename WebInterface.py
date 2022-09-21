@@ -7,12 +7,6 @@ app = Flask(__name__)
 app.config["DEBUG"] = True
 mainClass = MainClass()
 
-colors = [
-    "#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA",
-    "#ABCDEF", "#DDDDDD", "#ABCABC", "#4169E1",
-    "#C71585", "#FF4500", "#FEDCBA", "#46BFBD"]
-
-
 @app.route('/')
 def index():
     return 'Hello world'
@@ -27,8 +21,14 @@ def home():
     moisture_values2 = mainClass.moistureSensors.get_sensor_data(2)
 
     # Doughnut chart data (Temperature)
-    doughnut_temp = mainClass.humiditySensor.get_temperature()
-    temperature_values = [doughnut_temp]
+    temperature = mainClass.humiditySensor.get_temperature()
+    temperature_colour0 = ['rgba(122, 193, 239, 0.3)']
+    temperature_colour1 = ['rgba(122, 193, 239, 0.3)']
+    if temperature >= 0:
+        temperature_colour0 = ['rgba(206, 21, 52, 0.3)']
+        temperature_colour1 = ['rgba(206, 21, 52, 0.3)']
+
+    temperature_values = [temperature]
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':
@@ -42,11 +42,13 @@ def home():
     elif request.method == 'GET':
         return render_template('home.html', max=100, moisture_labels=moisture_labels,
                                moisture_values0=moisture_values0, moisture_values1=moisture_values1,
-                               moisture_values2=moisture_values2, temperature_values=temperature_values)
+                               moisture_values2=moisture_values2, temperature_values=temperature_values,
+                               temperature_colour0=temperature_colour0, temperature_colour1=temperature_colour1)
 
     return render_template('home.html', max=100, moisture_labels=moisture_labels,
                            moisture_values0=moisture_values0, moisture_values1=moisture_values1,
-                           moisture_values2=moisture_values2, temperature_values=temperature_values)
+                           moisture_values2=moisture_values2, temperature_values=temperature_values,
+                           temperature_colour0=temperature_colour0, temperature_colour1=temperature_colour1)
 
 
 if __name__ == '__main__':

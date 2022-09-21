@@ -147,10 +147,14 @@
                     "{{ item }}",
                     {% endfor %}],
                 backgroundColor: [
-                    'rgba(206, 21, 52, 0.3)'
+                    {% for item in temperature_colour0 %}
+                    "{{ item }}",
+                    {% endfor %}
                 ],
                 borderColor: [
-                    'rgba(206, 21, 52, 1)'
+                    {% for item in temperature_colour1 %}
+                    "{{ item }}",
+                    {% endfor %}
                 ],
                 borderWidth: 1
             }]
