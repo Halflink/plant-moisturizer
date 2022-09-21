@@ -132,9 +132,7 @@
         const temperature_data = {
             datasets: [{
                 label: 'Temperature',
-                data: [{% for item in temperature_values %}
-                        "{{ item }}",
-                        {% endfor %}],
+                data: [30],
                 backgroundColor: [
                     'rgba(206, 21, 52, 0.3)'
                 ],
@@ -151,7 +149,8 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        suggestedMin: 0,
+                        suggestedMax: 100
                     }
                 }
             }
