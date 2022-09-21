@@ -68,10 +68,8 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
   * ~~Create moisture chart~~
   * ~~Create buttons to activate pumps~~
   * ~~read-out sensors in seperate thread~~
-  * Create humidity chart
+  * ~~Create humidity chart~~
   * ~~Create current temperature gauge~~
-* Program heartbeat monitoring
-  * Set-up e-mail server
 * Set-up autostart when booting
 * Create enclosure for all the parts
 * Create PCB for all electronic parts
