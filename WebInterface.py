@@ -21,7 +21,7 @@ def home():
     moisture_values2 = mainClass.moistureSensors.get_sensor_data(2)
 
     # Doughnut chart data (Temperature)
-    temperature = mainClass.humiditySensor.get_temperature()
+    temperature = -10 #mainClass.humiditySensor.get_temperature()
     temperature_colour0 = ['rgba(122, 193, 239, 0.3)']
     temperature_colour1 = ['rgba(122, 193, 239, 0.3)']
     if temperature >= 0:
