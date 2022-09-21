@@ -16,13 +16,13 @@
         display: grid;
         column-gap: 2px;
         background-color: #101010;
-        grid-template-columns: 49% 49%;
+        grid-template-columns: 49% 24% 24%;
     }
 
     .kop {
         text-align: center;
         background-color: #282828;
-        grid-column: 1 / span 2;
+        grid-column: 1 / span 3;
         grid-row: 1;
     }
 
@@ -43,7 +43,7 @@
     .pump {
         background-color: #282828;
         text-align: center;
-        grid-column: 1 / span 2;
+        grid-column: 1 / span 3;
         grid-row: 3;
     }
 </style>
@@ -130,36 +130,28 @@
 
     <script>
         const temperature_data = {
-          labels: [
-            'Temperature',
-            ' '
-          ],
-          datasets: [{
-            label: 'Temperature',
-            data: [{% for item in temperature_values %}
-                    "{{ item }}",
-                    {% endfor %}],
-            backgroundColor: [
-              'rgb(206, 21, 52)',
-              'rgb(214, 208, 214)'
-            ],
-            hoverOffset: 4
-          }]
+            datasets: [{
+                label: 'Temperature',
+                data: [{% for item in temperature_values %}
+                        "{{ item }}",
+                        {% endfor %}],
+                backgroundColor: [
+                    'rgba(206, 21, 52, 0.3)'
+                ],
+                borderColor: [
+                    'rgba(206, 21, 52, 1)'
+                ],
+                borderWidth: 1
+            }]
         };
 
         const temperature_config = {
-            type: 'doughnut',
+            type: 'bar',
             data: temperature_data,
             options: {
-                rotation: -90,
-                circumference: 180,
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    title: {
-                        display: true,
-                        text: "Temperature read-out"
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 }
             }
