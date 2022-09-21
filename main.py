@@ -31,7 +31,9 @@ class MainClass:
                                 log_name=self.log_name)
 
         # Set Sensors in own thread
-        self.moistureSensors = self.MoistureSensor(log_name=self.log_name)
+        self.moistureSensors = self.MoistureSensor(log_name=self.log_name, bus=json_handler.spi_bus,
+                                                   device=json_handler.spi_device,
+                                                   readout_history_length=json_handler.spi_readout_history_length)
         self.humiditySensor = self.HumiditySensor(log_name=self.log_name, dht_pin=json_handler.humidity_sensor_gpio)
         self.sensor_thread = self.threading.Thread(target=self.sensor_thread_function, args=("sensor thread",))
 

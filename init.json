@@ -20,7 +20,12 @@
 	"Log path": "./log/",
 	"Log level": 10,
 	"Humidity Sensor GPIO": 4,
-	"Web port number": 5001
+	"Web port number": 5001,
+	"SPI": {
+		"Device Bus": 0,
+        "Device": 0,
+        "Readout history length": 5
+	}
 }
 
 

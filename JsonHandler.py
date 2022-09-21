@@ -16,6 +16,9 @@ class JsonHandler:
             self.log_level = init_info['Log level']
             self.humidity_sensor_gpio = init_info['Humidity Sensor GPIO']
             self.web_port_number = init_info['Web port number']
+            self.spi_bus = init_info['SPI']['Device Bus']
+            self.spi_device = init_info['SPI']['Device']
+            self.spi_readout_history_length = init_info['SPI']['Readout history length']
 
     def print_settings(self):
         print("device_bus: %.1f " % self.device_bus)
@@ -28,6 +31,9 @@ class JsonHandler:
         print("Log level: %.0f " % self.log_level)
         print("Humidity Sensor GPIO: %.0f" % self.humidity_sensor_gpio)
         print("Web port number: %.0f" % self.web_port_number)
+        print("SPI Device Bus: %.0f" % self.spi_bus)
+        print("SPI Device: %.0f" % self.spi_device)
+        print("SPI Readout history length: %.0f" % self.spi_readout_history_length)
 
 
 if __name__ == '__main__':
