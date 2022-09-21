@@ -133,11 +133,15 @@
             labels: ['Celsius'],
             datasets: [{
                 label: 'Temperature',
-                data: [temperature_values],
+                data: [{% for item in temperature_values %}
+                    "{{ item }}",
+                    {% endfor %}],
                 backgroundColor: [
+                    'rgba(206, 21, 52, 0.3)',
                     'rgba(206, 21, 52, 0.3)'
                 ],
                 borderColor: [
+                    'rgba(206, 21, 52, 1)',
                     'rgba(206, 21, 52, 1)'
                 ],
                 borderWidth: 1
