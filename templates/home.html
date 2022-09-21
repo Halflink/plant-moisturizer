@@ -143,7 +143,7 @@
             labels: ['Celsius'],
             datasets: [{
                 label: 'Temperature',
-                maxBarThickness: 8,
+                maxBarThickness: 24,
                 data: [{% for item in temperature_values %}
                     "{{ item }}",
                     {% endfor %}],
@@ -170,7 +170,10 @@
                         min: -50,
                         max: 50,
                         ticks: {
-                            stepSize: 10
+                            stepSize: 10,
+                            major: {
+                                enabled: true
+                            }
                         }
                     }
                 },
