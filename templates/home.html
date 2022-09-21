@@ -133,9 +133,9 @@
             labels: ['Celsius'],
             datasets: [{
                 label: 'Temperature',
-                data: [% for item in temperature_values %}
-                        "{{ item }}",
-                        {% endfor %}],
+                data: [{% for item in temperature_values %}
+                    "{{ item }}",
+                    {% endfor %}],
                 backgroundColor: [
                     'rgba(206, 21, 52, 0.3)'
                 ],
