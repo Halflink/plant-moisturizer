@@ -63,7 +63,7 @@
             <canvas id="moistureChart"></canvas>
         </div>
         <div class="temperature">
-            <canvas id="temperatureCanvas" height="90%"></canvas>
+            <canvas id="temperatureCanvas"></canvas>
         </div>
         <div class="humidity">
             <canvas id="humidityCanvas"></canvas>
@@ -143,6 +143,7 @@
             labels: ['Celsius'],
             datasets: [{
                 label: 'Temperature',
+                maxBarThickness: 8,
                 data: [{% for item in temperature_values %}
                     "{{ item }}",
                     {% endfor %}],
