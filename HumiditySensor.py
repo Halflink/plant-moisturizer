@@ -23,6 +23,13 @@ class HumiditySensor:
             temperature = self.temperature
         return temperature
 
+    def get_humidity(self):
+        humidity = 0
+        if self.humidity is not None:
+            humidity = self.humidity
+        return humidity
+
+
     def get_temperature_string(self):
         return "Temp={0:0.1f}*C".format(self.temperature)
 

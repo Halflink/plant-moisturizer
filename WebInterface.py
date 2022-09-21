@@ -20,15 +20,18 @@ def home():
     moisture_values1 = mainClass.moistureSensors.get_sensor_data(1)
     moisture_values2 = mainClass.moistureSensors.get_sensor_data(2)
 
-    # Doughnut chart data (Temperature)
+    # Bar chart data (Temperature)
     temperature = mainClass.humiditySensor.get_temperature()
-    temperature_colour0 = ['rgba(122, 193, 239, 0.3)']
-    temperature_colour1 = ['rgba(122, 193, 239, 1)']
+    humidity = mainClass.humiditySensor.get_humidity()
+    colour0 = 'rgba(122, 193, 239, 0.3)'
+    colour1 = 'rgba(122, 193, 239, 1)'
     if temperature >= 0:
-        temperature_colour0 = ['rgba(206, 21, 52, 0.3)']
-        temperature_colour1 = ['rgba(206, 21, 52, 1)']
+        colour0 = 'rgba(206, 21, 52, 0.3)'
+        colour1 = 'rgba(206, 21, 52, 1)'
+    temperature_colour0 = [colour0, 'rgba(9, 170, 10, 0.3)']
+    temperature_colour1 = [colour1, 'rgba(9, 170, 10, 1)']
 
-    temperature_values = [temperature]
+    temperature_values = [temperature, humidity]
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':

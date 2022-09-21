@@ -14,15 +14,14 @@
 
     .container {
         display: grid;
-        column-gap: 2px;
         background-color: #101010;
-        grid-template-columns: 49% 24% 24%;
+        grid-template-columns: 49% 49%;
     }
 
     .kop {
         text-align: center;
         background-color: #282828;
-        grid-column: 1 / span 3;
+        grid-column: 1 / span 2;
         grid-row: 1;
     }
 
@@ -40,17 +39,10 @@
         grid-row: 2;
     }
 
-    .humidity {
-        text-align: center;
-        background-color: #282828;
-        grid-column: 3;
-        grid-row: 2;
-    }
-
     .pump {
         background-color: #282828;
         text-align: center;
-        grid-column: 1 / span 3;
+        grid-column: 1 / span 2;
         grid-row: 3;
     }
 </style>
@@ -140,9 +132,9 @@
 
     <script>
         const temperature_data = {
-            labels: ['Celsius'],
+            labels: ['Temperature', 'Humidity'],
             datasets: [{
-                label: 'Temperature',
+                label: 'Weather station',
                 maxBarThickness: 24,
                 data: [{% for item in temperature_values %}
                     "{{ item }}",
