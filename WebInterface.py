@@ -27,7 +27,7 @@ def home():
     moisture_values2 = mainClass.moistureSensors.get_sensor_data(2)
 
     # Doughnut chart data (Temperature)
-    doughnut_temp = 30 # mainClass.humiditySensor.temperature
+    doughnut_temp = mainClass.humiditySensor.get_temperature()
     temperature_values = [doughnut_temp, 20]
 
     if request.method == 'POST':
