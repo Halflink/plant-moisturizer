@@ -26,17 +26,24 @@
         grid-row: 1;
     }
 
-    .col-1 {
+    .moisture {
         text-align: center;
         background-color: #282828;
         grid-column: 1;
         grid-row: 2;
     }
 
-    .col-2 {
+    .temperature {
         text-align: center;
         background-color: #282828;
         grid-column: 2;
+        grid-row: 2;
+    }
+
+    .humidity {
+        text-align: center;
+        background-color: #282828;
+        grid-column: 3;
         grid-row: 2;
     }
 
@@ -52,11 +59,14 @@
         <div class="kop">
             <h1>Plant moisturizer dashboard</h1>
         </div>
-        <div class="col-1">
+        <div class="moisture">
             <canvas id="moistureChart"></canvas>
         </div>
-        <div class="col-2">
+        <div class="temperature">
             <canvas id="temperatureCanvas"></canvas>
+        </div>
+        <div class="humidity">
+            <canvas id="humidityCanvas"></canvas>
         </div>
         <div class=""pump">
             <h2>Pump activators</h2>
