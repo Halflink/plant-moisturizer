@@ -30,7 +30,7 @@ def home():
     doughnut_max = 50
     doughnut_temp = mainClass.humiditySensor.temperature
     doughnut_untemp = doughnut_max - doughnut_temp
-    temperature_values = [doughnut_temp, doughnut_untemp]
+    temperature_values = [doughnut_temp]
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':
