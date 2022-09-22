@@ -14,8 +14,10 @@ class MainClass:
     # Variables
     stop_thread_event = threading.Event()
 
-    def __init__(self):
+    def __init__(self, test):
 
+        if test < 3:
+            print('ruk')
         # Get settings
         json_handler = self.JsonHandler()
 
