@@ -16,9 +16,7 @@ def index():
 @app.route("/home", methods=['GET', 'POST'])
 def home():
     # Line chart data (moisture)
-    print('hierdan?')
     moisture_labels = mainClass.moistureSensors.get_sensor_data_times()
-    print('hierdan2?')
     moisture_values0 = mainClass.moistureSensors.get_sensor_data(0)
     moisture_values1 = mainClass.moistureSensors.get_sensor_data(1)
     moisture_values2 = mainClass.moistureSensors.get_sensor_data(2)
@@ -63,6 +61,11 @@ try:
     mainClass.activate_power_led()
     mainClass.time.sleep(2)
     app.run(debug=True, port=mainClass.web_port_number, host='0.0.0.0')
+    print('Killing program....')
+    mainClass.log.debug('Web interface keyboard interruption')
+    mainClass.moistureSensors.close()
+    mainClass.deactivate_power_led()
+    mainClass.cleanup_gpio()
 except KeyboardInterrupt as e:
     print('Killing program....')
     mainClass.log.debug('Web interface keyboard interruption')
