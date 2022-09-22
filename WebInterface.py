@@ -5,7 +5,7 @@ from flask import render_template, redirect, url_for, Markup
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-mainClass = MainClass()
+mainClass = MainClass(4)
 
 
 @app.route('/')
@@ -55,7 +55,6 @@ def home():
                            temperature_colour0=temperature_colour0, temperature_colour1=temperature_colour1)
 
 
-#if __name__ == '__main__':
 mainClass.start_sensor_thread()
 mainClass.activate_power_led()
 app.run(debug=True, port=mainClass.web_port_number, host='0.0.0.0')
