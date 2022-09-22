@@ -94,8 +94,9 @@ class MainClass:
         print('Wait for tread to stop...')
         self.sensor_thread.join()
 
-# if __name__ == '__main__':
+
+if __name__ == '__main__':
     # If main is started, it will test the sensors and the pumps.
-    # mainClass = MainClass()
-    # mainClass.start_sensor_thread()
-    # mainClass.pump_test()
+    mainClass = MainClass()
+    mainClass.start_sensor_thread()
+    mainClass.pump_test()
