@@ -67,10 +67,10 @@ try:
     mainClass.deactivate_power_led()
     mainClass.cleanup_gpio()
 except KeyboardInterrupt as e:
-    print('Killing program....')
-    mainClass.log.debug('Web interface keyboard interruption')
-    mainClass.moistureSensors.close()
-    mainClass.deactivate_power_led()
-    mainClass.cleanup_gpio()
+    print('Killing program2....')
+    # mainClass.log.debug('Web interface keyboard interruption')
+    # mainClass.moistureSensors.close()
+    # mainClass.deactivate_power_led()
+    # mainClass.cleanup_gpio()
 
 
