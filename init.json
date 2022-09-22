@@ -25,7 +25,8 @@
 		"Device Bus": 0,
         "Device": 0,
         "Readout history length": 5
-	}
+	},
+	"Power LED GPIO": 26
 }
 
 

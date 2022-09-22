@@ -9,6 +9,7 @@ class MainClass:
     import logging
     import threading
     import time
+    import RPi.GPIO as GPIO
 
     # Variables
 
@@ -16,6 +17,11 @@ class MainClass:
 
         # Get settings
         json_handler = self.JsonHandler()
+
+        # Set power LED
+        self.power_led_gpio = json_handler.power_led_gpio
+        self.GPIO.setmode(self.GPIO.BCM)
+        self.GPIO.setup(self.power_led_gpio, self.GPIO.OUT)
 
         # Initialize logging. The logger class is only there to initialize pythons logging module
         self.log_name = 'MoisturizerLogging'
@@ -39,6 +45,15 @@ class MainClass:
 
         # Set web port number
         self.web_port_number = json_handler.web_port_number
+
+    def activate_power_led(self):
+        self.GPIO.output(self.power_led_gpio, self.GPIO.HIGH)
+
+    def deactivate_power_led(self):
+        self.GPIO.output(self.power_led_gpio, self.GPIO.LOW)
+
+    def cleanup_gpio(self):
+        self.GPIO.cleanup()
 
     def activate_pump(self, pump_index):
         if 0 <= pump_index < self.pumps.length():
