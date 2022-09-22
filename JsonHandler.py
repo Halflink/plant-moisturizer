@@ -5,7 +5,7 @@ class JsonHandler:
 
     def __init__(self):
 
-        with open("init.json") as jsonFile:
+        with open("./init.json") as jsonFile:
             init_info = json.load(jsonFile)
             jsonFile.close()
             self.device_bus = init_info['Relay hat']['Device bus']
