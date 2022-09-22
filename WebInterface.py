@@ -5,7 +5,7 @@ from flask import render_template, redirect, url_for, Markup
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-#mainClass = MainClass()
+mainClass = MainClass()
 
 
 @app.route('/')
