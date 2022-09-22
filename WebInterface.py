@@ -55,10 +55,10 @@ def home():
 
 
 if __name__ == '__main__':
-    mainClass.start_sensor_thread()
-    mainClass.activate_power_led()
-    mainClass.time.sleep(2)
     try:
+        mainClass.start_sensor_thread()
+        mainClass.activate_power_led()
+        mainClass.time.sleep(2)
         app.run(debug=True, port=mainClass.web_port_number, host='0.0.0.0')
     except KeyboardInterrupt as e:
         print('Killing program....')
