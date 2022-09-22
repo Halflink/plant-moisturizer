@@ -55,12 +55,18 @@ def home():
 
 
 if __name__ == '__main__':
+    print('db 1')
     mainClass = MainClass()
     try:
+        print('db 2')
         mainClass.start_sensor_thread()
+        print('db 3')
         mainClass.activate_power_led()
+        print('db 4')
         mainClass.time.sleep(2)
+        print('db 5')
         app.run(debug=True, port=mainClass.web_port_number, host='0.0.0.0')
+        print('db 6')
     except KeyboardInterrupt as e:
         print('Killing program....')
         mainClass.log.debug('Web interface keyboard interruption')
