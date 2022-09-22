@@ -65,7 +65,10 @@ if __name__ == '__main__':
         print('db 4')
         mainClass.time.sleep(2)
         print('db 5')
-        app.run(debug=True, port=mainClass.web_port_number, host='0.0.0.0')
+        # app.run(debug=True, port=mainClass.web_port_number, host='0.0.0.0')
+        while True:
+            mainClass.time.sleep(10)
+            print('10')
         print('db 6')
     except KeyboardInterrupt as e:
         print('Killing program....')
