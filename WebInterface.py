@@ -62,7 +62,7 @@ if __name__ == '__main__':
     app.run(debug=True, port=mainClass.web_port_number, host='0.0.0.0')
     print('Killing program....')
     mainClass.log.debug('Web interface keyboard interruption')
-    mainClass.stop_thread_event()
+    mainClass.end_thread_event()
     mainClass.moistureSensors.close()
     mainClass.deactivate_power_led()
     mainClass.cleanup_gpio()
