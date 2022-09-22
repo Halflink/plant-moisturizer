@@ -5,7 +5,7 @@ from flask import render_template, redirect, url_for, Markup
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-mainClass = MainClass()
+
 
 @app.route('/')
 def index():
@@ -55,6 +55,7 @@ def home():
 
 
 if __name__ == '__main__':
+    mainClass = MainClass()
     try:
         mainClass.start_sensor_thread()
         mainClass.activate_power_led()
