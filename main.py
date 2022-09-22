@@ -12,6 +12,7 @@ class MainClass:
     import RPi.GPIO as GPIO
 
     # Variables
+    stop_thread_event = threading.Event()
 
     def __init__(self):
 
@@ -41,7 +42,8 @@ class MainClass:
                                                    device=json_handler.spi_device,
                                                    readout_history_length=json_handler.spi_readout_history_length)
         self.humiditySensor = self.HumiditySensor(log_name=self.log_name, dht_pin=json_handler.humidity_sensor_gpio)
-        self.sensor_thread = self.threading.Thread(target=self.sensor_thread_function, args=("sensor thread",))
+        self.sensor_thread = self.threading.Thread(target=self.sensor_thread_function, args=("sensor thread",
+                                                                                             self.stop_thread_event))
 
         # Set web port number
         self.web_port_number = json_handler.web_port_number
@@ -70,13 +72,16 @@ class MainClass:
                 print('Quit the Loop')
                 self.sys.exit()
 
-    def sensor_thread_function(self, thread_name):
+    def sensor_thread_function(self, thread_name, stop_thread_event,):
         self.log.debug('Initializing ' + thread_name)
         try:
             while True:
                 self.moistureSensors.write_sensor_read_out()
                 self.humiditySensor.write_sensor_read_out()
                 self.time.sleep(10)
+                if stop_thread_event.is_set():
+                    self.log.debug('Sensor thread is stopped')
+                    break
         except KeyboardInterrupt as e:
             self.log.debug('Sensor thread keyboard interruption')
             self.moistureSensors.close()
@@ -84,6 +89,10 @@ class MainClass:
     def start_sensor_thread(self):
         self.sensor_thread.start()
 
+    def end_sensor_thread(self):
+        self.stop_thread_event.set()
+        print('Wait for tread to stop...')
+        self.sensor_thread.join()
 
 if __name__ == '__main__':
     # If main is started, it will test the sensors and the pumps.

@@ -55,22 +55,16 @@ def home():
                            temperature_colour0=temperature_colour0, temperature_colour1=temperature_colour1)
 
 
-# if __name__ == '__main__':
-try:
+if __name__ == '__main__':
     mainClass.start_sensor_thread()
     mainClass.activate_power_led()
     mainClass.time.sleep(2)
     app.run(debug=True, port=mainClass.web_port_number, host='0.0.0.0')
     print('Killing program....')
     mainClass.log.debug('Web interface keyboard interruption')
+    mainClass.stop_thread_event()
     mainClass.moistureSensors.close()
     mainClass.deactivate_power_led()
     mainClass.cleanup_gpio()
-except KeyboardInterrupt as e:
-    print('Killing program2....')
-    # mainClass.log.debug('Web interface keyboard interruption')
-    # mainClass.moistureSensors.close()
-    # mainClass.deactivate_power_led()
-    # mainClass.cleanup_gpio()
 
 
