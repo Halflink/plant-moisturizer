@@ -5,7 +5,7 @@ from flask import render_template, redirect, url_for, Markup
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-
+mainClass = MainClass()
 
 @app.route('/')
 def index():
@@ -54,27 +54,17 @@ def home():
                            temperature_colour0=temperature_colour0, temperature_colour1=temperature_colour1)
 
 
-if __name__ == '__main__':
-    print('db 1')
-    mainClass = MainClass()
-    try:
-        print('db 2')
-        mainClass.start_sensor_thread()
-        print('db 3')
-        mainClass.activate_power_led()
-        print('db 4')
-        mainClass.time.sleep(2)
-        print('db 5')
-        # app.run(debug=True, port=mainClass.web_port_number, host='0.0.0.0')
-        while True:
-            mainClass.time.sleep(10)
-            print('10')
-        print('db 6')
-    except KeyboardInterrupt as e:
-        print('Killing program....')
-        mainClass.log.debug('Web interface keyboard interruption')
-        mainClass.moistureSensors.close()
-        mainClass.deactivate_power_led()
-        mainClass.cleanup_gpio()
+# if __name__ == '__main__':
+try:
+    mainClass.start_sensor_thread()
+    mainClass.activate_power_led()
+    mainClass.time.sleep(2)
+    app.run(debug=True, port=mainClass.web_port_number, host='0.0.0.0')
+except KeyboardInterrupt as e:
+    print('Killing program....')
+    mainClass.log.debug('Web interface keyboard interruption')
+    mainClass.moistureSensors.close()
+    mainClass.deactivate_power_led()
+    mainClass.cleanup_gpio()
 
 
