@@ -70,10 +70,10 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
   * ~~read-out sensors in seperate thread~~
   * ~~Create humidity chart~~
   * ~~Create current temperature gauge~~
-* Set-up autostart when booting
+* ~~Set-up autostart when booting~~ -> done using a launcher script started by crontab
 * Create enclosure for all the parts
 * Create PCB for all electronic parts
-* Set up power converter
+* ~~Set up power converter~~
 * Create tubing system and sprinklers
 * Create water reservoir
 * Find solution for SD card corruption (planning to have a high up-time)
@@ -85,3 +85,5 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
 ![Test bench](/docs/testbench.jpg "Moved to test box")
 ### Test set-up at Spark Makers Zone
 ![Spark](/docs/at_spark1.jpg "At Spark Makers Zone")
+### Test set-up having connected all sensors
+![Test bench](/docs/testbench2.jpg "Sensors are complete")
