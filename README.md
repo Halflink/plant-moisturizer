@@ -41,7 +41,7 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
   * Set up [I2C](https://wiki.52pi.com/index.php?title=DockerPi_4_Channel_Relay_SKU:_EP-0099)
   * Install smbus package for python `sudo apt-get install python3-smbus`
 * Use init.json to set up the HAT, GPIO ports etc.
-* Set up MCP3008
+* Set up MCP3008 [MCP3008](https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/mcp3008)
 * Install FLASK `sudo apt-get install python3-flask`
 * Set up DHT22 sensor: https://pimylifeup.com/raspberry-pi-humidity-sensor-dht22/
   * `sudo pip3 install Adafruit_DHT`  
@@ -87,3 +87,5 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
 ![Spark](/docs/at_spark1.jpg "At Spark Makers Zone")
 ### Test set-up having connected all sensors
 ![Test bench](/docs/testbench2.jpg "Sensors are complete")
+### PCB design
+![PCB](/docs/pcb.png "PCB design")
