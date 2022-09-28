@@ -5,7 +5,7 @@
 |------------------|----------------------------|
 | Author:          | Jeroen van Zwam            |
 | Date:            | 2021-10-25                 |  
-| Last update: | 2022-06-19                 |
+| Last update: | 2022-09-28                 |
 | Project type:    | Raspberry Pi               |
 
 ## Executable
@@ -22,6 +22,12 @@ To solve this I picked up the idea to create an automated watering system.
 * Check water level in water container
 * Air temperature check 
 * Browser based interface showing all parameters
+* RGB Led: 
+  * Green: application has started
+  * Yellow: application is shutting down
+  * Red: application is down 
+  * Magnenta: application is in error
+* Shutdown button: starts closing of application and sends shutdown command to OS
 
 ### Pi 4 Model B choice
 The Pi 3 Model B is still available and might be a cheaper choice. The reason I opted for the Pi4B is that this Pi 
@@ -57,6 +63,11 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
 * Water reservoir (not yet bought)
 * watering tubes (not yet bought)
 * Housing for raspberry pi & components (not yet bought)
+* 4x 1M&#937; resistors
+* 1x 10K&#937; resistor
+* 3x 220&#937; resistors
+* 1x RGB led (common anode)
+* 1x button
 
 *) Please note that only the major parts are mentioned
 
