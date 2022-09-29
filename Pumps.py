@@ -8,7 +8,8 @@ class Pumps:
     class Pump:
 
         # Import
-        from datetime import time, datetime as time, datetime
+        from time import time as time
+        from datetime import datetime as datetime
         import logging
 
         last_run_datetime = None
