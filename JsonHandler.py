@@ -28,7 +28,7 @@ class JsonHandler:
         for element in range(no_of_pumps):
             print("Pump ID: %.1f " % self.pump_settings[element]['ID'])
             print("Pump time: %.1f " % self.pump_settings[element]['Pump time'])
-            print("Sprinkling interval: %.1f " % self.pump_settings[element]['Sprinkling interval'])
+            print("Sprinkling interval: %.1f " % self.pump_settings[element]['Sprinkler interval'])
             print("Sensor: %.1f " % self.pump_settings[element]['Sensor'])
             print("Sensor threshold: %.1f " % self.pump_settings[element]['Sensor threshold'])
         print("Log path: %s " % self.log_path)

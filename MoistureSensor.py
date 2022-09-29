@@ -52,6 +52,9 @@ class MoistureSensor:
     def get_last_read_out_string(self):
         return self.convert_list_to_string(self.sensor_data_matrix[-1])
 
+    def get_last_readout(self, sensor):
+        return self.sensor_data_matrix[-1][sensor]
+
     def get_sensor_data(self, sensor_no):
         values = []
         for i in range(len(self.sensor_data_matrix)):

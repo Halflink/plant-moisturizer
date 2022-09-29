@@ -8,7 +8,8 @@ class MainClass:
     from Logger import Logger
     import logging
     import threading
-    import time
+    import time as time
+    import datetime as datetime
     import RPi.GPIO as GPIO
 
     # Variables
@@ -63,7 +64,14 @@ class MainClass:
             self.pumps.water_plants(pump_index)
 
     def auto_sprinkler(self):
-        pass
+        for pump in self.pumps:
+            if self.moistureSensors.get_last_readout(pump.sensor) <= pump.sensor_threshold:
+                if pump.last_run_datetime is None:
+                    pump.water_plants()
+                else:
+                    next_run = pump.last_run_datetime + self.datetime.timedelta(seconds=3600)
+                    if self.datetime.datetime.now() > next_run:
+                        pump.water_plants()
 
     def pump_test(self):
         while True:

@@ -14,30 +14,34 @@ class Pumps:
 
         last_run_datetime = None
 
-        def __init__(self, bus, pump_id, pump_time, device_addr, log_name):
+        def __init__(self, bus, pump_id, pump_time, device_addr, log_name, sprinkler_interval, sensor
+                     , sensor_threshold):
 
             self.log = self.logging.getLogger(log_name)
             self.device_addr = device_addr
             self.pump_id = pump_id
             self.pump_time = pump_time
             self.bus = bus
+            self.sprinkler_interval = sprinkler_interval
+            self.sensor = sensor
+            self.sensor_threshold = sensor_threshold
 
         def start_pump(self):
-            if self.last_run_datetime is not None:
-                last_run = self.last_run_datetime.strftime("%m/%d/%Y, %H:%M:%S")
-                self.log.debug('Last run pump {} is at {}'.format(self.pump_id, last_run))
-            self.log.debug('Start pump %.1f ' % self.pump_id)
+            self.log.info('Start pump %.1f ' % self.pump_id)
             self.bus.write_byte_data(self.device_addr, self.pump_id, 0xFF)
 
         def stop_pump(self):
             self.log.debug('Stop pump %.1f ' % self.pump_id)
-            self.last_run_datetime = self.datetime.now()
             self.bus.write_byte_data(self.device_addr, self.pump_id, 0x00)
 
         def water_plants(self):
+            if self.last_run_datetime is not None:
+                last_run = self.last_run_datetime.strftime("%d-%m-%Y, %H:%M:%S")
+                self.log.info('Last run pump {} is at {}'.format(self.pump_id, last_run))
             self.start_pump()
             self.time.sleep(self.pump_time)
             self.stop_pump()
+            self.last_run_datetime = self.datetime.now()
 
     def __init__(self, device_addr, device_bus, pump_settings, log_name):
 
@@ -53,7 +57,10 @@ class Pumps:
                              pump_id=pump_settings[element]['ID'],
                              pump_time=pump_settings[element]['Pump time'],
                              device_addr=device_addr,
-                             log_name=log_name)
+                             log_name=log_name,
+                             sprinkler_interval=pump_settings[element]['Sprinkler interval'],
+                             sensor=pump_settings[element]['Sensor'],
+                             sensor_threshold=pump_settings[element]['Sensor threshold'])
             self.pumps.append(pump)
 
     def length(self):
