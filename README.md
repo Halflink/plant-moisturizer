@@ -100,3 +100,5 @@ For this I plan to use a DC-DC step-down converter to create a stable 5 volt for
 ![Test bench](/docs/testbench2.jpg "Sensors are complete")
 ### PCB design
 ![PCB](/docs/pcb.png "PCB design")
+### Screenprint webinterface
+![Interface](/docs/screenprint.png "Interface example")
