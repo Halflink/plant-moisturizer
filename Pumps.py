@@ -8,7 +8,7 @@ class Pumps:
     class Pump:
 
         # Import
-        from time import time as time
+        import time as time
         from datetime import datetime as datetime
         import logging
 
