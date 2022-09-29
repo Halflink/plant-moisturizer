@@ -1,3 +1,6 @@
+import time
+
+
 class MainClass:
     # Import
     import sys
@@ -63,7 +66,7 @@ class MainClass:
         if 0 <= pump_index < self.pumps.length():
             self.pumps.water_plants(pump_index)
 
-    def auto_sprinkler(self):
+    def check_sprinkler(self):
         for pump in self.pumps:
             if self.moistureSensors.get_last_readout(pump.sensor) <= pump.sensor_threshold:
                 if pump.last_run_datetime is None:
@@ -90,7 +93,9 @@ class MainClass:
             while True:
                 self.moistureSensors.write_sensor_read_out()
                 self.humiditySensor.write_sensor_read_out()
-                self.time.sleep(10)
+                time.sleep(10)
+                if self.auto_sprinkling:
+                    self.check_sprinkler()
                 if stop_thread_event.is_set():
                     self.log.debug('Sensor thread is stopped')
                     break
