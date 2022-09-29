@@ -62,6 +62,9 @@ class MainClass:
         if 0 <= pump_index < self.pumps.length():
             self.pumps.water_plants(pump_index)
 
+    def auto_sprinkler(self):
+        pass
+
     def pump_test(self):
         while True:
             try:

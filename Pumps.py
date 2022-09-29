@@ -8,8 +8,10 @@ class Pumps:
     class Pump:
 
         # Import
-        import time as time
+        from datetime import time, datetime as time, datetime
         import logging
+
+        last_run_datetime = None
 
         def __init__(self, bus, pump_id, pump_time, device_addr, log_name):
 
@@ -20,11 +22,14 @@ class Pumps:
             self.bus = bus
 
         def start_pump(self):
-            self.log.debug('Start pump = %.1f ' % self.pump_id)
+            if self.last_run_datetime is not None:
+                last_run = self.last_run_datetime.strftime("%m/%d/%Y, %H:%M:%S")
+                self.log.debug('Last run pump {} is at {}'.format(self.pump_id, last_run))
+            self.log.debug('Start pump %.1f ' % self.pump_id)
             self.bus.write_byte_data(self.device_addr, self.pump_id, 0xFF)
 
         def stop_pump(self):
-            self.log.debug('Stop pump = %.1f ' % self.pump_id)
+            self.log.debug('Stop pump %.1f ' % self.pump_id)
             self.bus.write_byte_data(self.device_addr, self.pump_id, 0x00)
 
         def water_plants(self):
