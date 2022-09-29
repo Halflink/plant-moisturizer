@@ -13,6 +13,7 @@ class MainClass:
 
     # Variables
     stop_thread_event = threading.Event()
+    auto_sprinkling = False
 
     def __init__(self):
 

@@ -6,6 +6,8 @@ from flask import render_template, redirect, url_for, Markup
 app = Flask(__name__)
 app.config["DEBUG"] = True
 mainClass = MainClass()
+disable_automatic_sprinkling = "Disable automatic sprinkling"
+enable_automatic_sprinkling = "Enable automatic sprinkling"
 
 
 @app.route('/')
@@ -34,6 +36,11 @@ def home():
 
     temperature_values = [temperature, humidity]
 
+    # auto sprinkling setting
+    auto_onoff = enable_automatic_sprinkling
+    if mainClass.auto_sprinkling:
+        auto_onoff = disable_automatic_sprinkling
+
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':
             mainClass.activate_pump(0)
@@ -41,18 +48,26 @@ def home():
             mainClass.activate_pump(1)
         elif request.form.get('action3') == 'Activate Pump 3':
             mainClass.activate_pump(2)
+        elif request.form.get('action4') == disable_automatic_sprinkling:
+            mainClass.auto_sprinkling = False
+            auto_onoff = enable_automatic_sprinkling
+        elif request.form.get('action4') == enable_automatic_sprinkling:
+            mainClass.auto_sprinkling = True
+            auto_onoff = disable_automatic_sprinkling
         else:
             pass  # unknown
     elif request.method == 'GET':
         return render_template('home.html', max=100, moisture_labels=moisture_labels,
                                moisture_values0=moisture_values0, moisture_values1=moisture_values1,
                                moisture_values2=moisture_values2, temperature_values=temperature_values,
-                               temperature_colour0=temperature_colour0, temperature_colour1=temperature_colour1)
+                               temperature_colour0=temperature_colour0, temperature_colour1=temperature_colour1,
+                               auto_onoff=auto_onoff)
 
     return render_template('home.html', max=100, moisture_labels=moisture_labels,
                            moisture_values0=moisture_values0, moisture_values1=moisture_values1,
                            moisture_values2=moisture_values2, temperature_values=temperature_values,
-                           temperature_colour0=temperature_colour0, temperature_colour1=temperature_colour1)
+                           temperature_colour0=temperature_colour0, temperature_colour1=temperature_colour1,
+                           auto_onoff=auto_onoff)
 
 
 mainClass.start_sensor_thread()
