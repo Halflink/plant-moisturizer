@@ -30,6 +30,7 @@ class Pumps:
 
         def stop_pump(self):
             self.log.debug('Stop pump %.1f ' % self.pump_id)
+            self.last_run_datetime = self.datetime.now()
             self.bus.write_byte_data(self.device_addr, self.pump_id, 0x00)
 
         def water_plants(self):
