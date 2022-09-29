@@ -37,9 +37,9 @@ def home():
     temperature_values = [temperature, humidity]
 
     # auto sprinkling setting
-    auto_onoff = "<input type='submit' value='{}' name='action4' />".format(enable_automatic_sprinkling)
+    auto_onoff = enable_automatic_sprinkling
     if mainClass.auto_sprinkling:
-        auto_onoff = "<input type='submit' value='{}' name='action4' />".format(disable_automatic_sprinkling)
+        auto_onoff = disable_automatic_sprinkling
 
     if request.method == 'POST':
         if request.form.get('action1') == 'Activate Pump 1':
@@ -50,10 +50,10 @@ def home():
             mainClass.activate_pump(2)
         elif request.form.get('action4') == disable_automatic_sprinkling:
             mainClass.auto_sprinkling = False
-            auto_onoff = "<input type='submit' value='{}' name='action4' />".format(enable_automatic_sprinkling)
+            auto_onoff = enable_automatic_sprinkling
         elif request.form.get('action4') == enable_automatic_sprinkling:
             mainClass.auto_sprinkling = True
-            auto_onoff = "<input type='submit' value='{}' name='action4' />".format(disable_automatic_sprinkling)
+            auto_onoff = disable_automatic_sprinkling
         else:
             pass  # unknown
     elif request.method == 'GET':
