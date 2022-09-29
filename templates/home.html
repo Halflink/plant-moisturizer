@@ -66,8 +66,13 @@
             <input type="submit" value="Activate Pump 1" name="action1"/>
             <input type="submit" value="Activate Pump 2" name="action2" />
             <input type="submit" value="Activate Pump 3" name="action3" />
-            <script>
-                document.write(auto_onoff);
+            <script type="text/javascript">
+                document.write(auto_onoff)
+                if(auto_onoff=="True")
+                    document.write("<input type='submit' value='Disable automatic sprinkling' name='action4' />")
+                else
+                    document.write("<input type='submit' value='Enable automatic sprinkling' name='action4' />")
+
             </script>
 
     </form>1
