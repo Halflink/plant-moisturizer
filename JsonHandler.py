@@ -12,8 +12,8 @@ class JsonHandler:
             hex_s = init_info['Relay hat']['Device Address']
             self.device_addr = int(hex_s, 16)
             self.pump_settings = init_info['Relay hat']['Pumps']
-            self.log_path = init_info['Log path']
-            self.log_level = init_info['Log level']
+            self.log_path = init_info['Logging']['Log path']
+            self.log_level = init_info['Logging']['Log level']
             self.humidity_sensor_gpio = init_info['Humidity Sensor GPIO']
             self.web_port_number = init_info['Web port number']
             self.spi_bus = init_info['SPI']['Device Bus']
@@ -28,6 +28,9 @@ class JsonHandler:
         for element in range(no_of_pumps):
             print("Pump ID: %.1f " % self.pump_settings[element]['ID'])
             print("Pump time: %.1f " % self.pump_settings[element]['Pump time'])
+            print("Sprinkling interval: %.1f " % self.pump_settings[element]['Sprinkling interval'])
+            print("Sensor: %.1f " % self.pump_settings[element]['Sensor'])
+            print("Sensor threshold: %.1f " % self.pump_settings[element]['Sensor threshold'])
         print("Log path: %s " % self.log_path)
         print("Log level: %.0f " % self.log_level)
         print("Humidity Sensor GPIO: %.0f" % self.humidity_sensor_gpio)

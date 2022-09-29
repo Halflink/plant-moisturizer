@@ -5,20 +5,31 @@
 		"Pumps": [
 			{
 				"ID": 1,
-				"Pump time": 10
+				"Pump time": 10,
+				"Sprinkling interval": 3600,
+				"Sensor": 0,
+				"Sensor threshold": 50
 			},
 			{
 				"ID": 2,
-				"Pump time": 10
+				"Pump time": 10,
+				"Sprinkling interval": 3600,
+				"Sensor": 1,
+				"Sensor threshold": 50
 			},
 			{
 				"ID": 3,
-				"Pump time": 10
+				"Pump time": 10,
+				"Sprinkling interval": 3600,
+				"Sensor": 2,
+				"Sensor threshold": 50
 			}
 		]
 	},
-	"Log path": "./log/",
-	"Log level": 10,
+	"Logging": {
+		"Log path": "./log/",
+		"Log level": 10
+	},
 	"Humidity Sensor GPIO": 4,
 	"Web port number": 5001,
 	"SPI": {
