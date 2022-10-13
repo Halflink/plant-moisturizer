@@ -68,11 +68,18 @@ class MainClass:
 
     def check_sprinkler(self):
         for pump in self.pumps:
-            if self.moistureSensors.get_last_readout(pump.sensor) <= pump.sensor_threshold:
+            readout_sensor = self.moistureSensors.get_last_readout(pump.sensor)
+            pump_sensor_threshold = pump.sensor_threshold
+            self.log.debug('check_sprinkler: Iterating pumps: pump {} , readout is {}, threshold is {}'.format(
+                pump.pump_id, readout_sensor, pump_sensor_threshold))
+            if readout_sensor <= pump_sensor_threshold:
+                self.log.debug('check_sprinkler: check last run')
                 if pump.last_run_datetime is None:
+                    self.log.debug('check_sprinkler: last run was none')
                     pump.water_plants()
                 else:
                     next_run = pump.last_run_datetime + self.datetime.timedelta(seconds=3600)
+                    self.log.debug('check_sprinkler: next run at {}'.format(next_run))
                     if self.datetime.datetime.now() > next_run:
                         pump.water_plants()
 
@@ -95,9 +102,10 @@ class MainClass:
                 self.humiditySensor.write_sensor_read_out()
                 time.sleep(10)
                 if self.auto_sprinkling:
+                    self.log.debug('sensor_thread_function: auto sprinkling is on, check sprinkler')
                     self.check_sprinkler()
                 if stop_thread_event.is_set():
-                    self.log.debug('Sensor thread is stopped')
+                    self.log.debug('sensor_thread_function: Sensor thread is stopped')
                     break
         except KeyboardInterrupt as e:
             self.log.debug('Sensor thread keyboard interruption')
