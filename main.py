@@ -101,8 +101,10 @@ class MainClass:
         last_readout_datetime = None
         try:
             while True:
-                if self.check_time_difference(last_readout_datetime, self.datetime.datetime.now(),
+                current_datetime = self.datetime.datetime.now()
+                if self.check_time_difference(last_readout_datetime, current_datetime,
                                               self.readout_interval):
+                    last_readout_datetime = current_datetime
                     self.moistureSensors.write_sensor_read_out()
                     self.humiditySensor.write_sensor_read_out()
                 if self.auto_sprinkling:
