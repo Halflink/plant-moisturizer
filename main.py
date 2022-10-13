@@ -6,7 +6,7 @@ class MainClass:
     import sys
     from HumiditySensor import HumiditySensor
     from JsonHandler import JsonHandler
-    from Pumps import Pumps
+    from RelayHat import RelayHat
     from MoistureSensor import MoistureSensor
     from Logger import Logger
     import logging
@@ -37,10 +37,10 @@ class MainClass:
         self.log = self.logging.getLogger(self.log_name)
 
         # Set pumps (relais hat)
-        self.pumps = self.Pumps(device_addr=json_handler.device_addr,
-                                device_bus=json_handler.device_bus,
-                                pump_settings=json_handler.pump_settings,
-                                log_name=self.log_name)
+        self.relayHat = self.RelayHat(device_addr=json_handler.device_addr,
+                                      device_bus=json_handler.device_bus,
+                                      pump_settings=json_handler.pump_settings,
+                                      log_name=self.log_name)
 
         # Set Sensors in own thread
         self.moistureSensors = self.MoistureSensor(log_name=self.log_name, bus=json_handler.spi_bus,
@@ -63,11 +63,11 @@ class MainClass:
         self.GPIO.cleanup()
 
     def activate_pump(self, pump_index):
-        if 0 <= pump_index < self.pumps.length():
-            self.pumps.water_plants(pump_index)
+        if 0 <= pump_index < self.relayHat.length():
+            self.relayHat.water_plants(pump_index)
 
     def check_sprinkler(self):
-        for pump in self.pumps.pumps:
+        for pump in self.relayHat.pumps:
             readout_sensor = self.moistureSensors.get_last_readout(pump.sensor)
             pump_sensor_threshold = pump.sensor_threshold
             self.log.debug('check_sprinkler: Iterating pumps: pump {} , readout is {}, threshold is {}'.format(
@@ -87,9 +87,9 @@ class MainClass:
     def pump_test(self):
         while True:
             try:
-                for i in range(self.pumps.length()):
+                for i in range(self.relayHat.length()):
                     self.log.info('Pump = %.1f ' % i)
-                    self.pumps.water_plants(i)
+                    self.relayHat.water_plants(i)
                     print(self.moistureSensors.get_last_read_out_string())
             except KeyboardInterrupt as e:
                 print('Quit the Loop')

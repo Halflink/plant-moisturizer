@@ -1,7 +1,7 @@
 import logging
 
 
-class Pumps:
+class RelayHat:
     import smbus
     import logging
 
