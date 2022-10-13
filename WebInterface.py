@@ -72,7 +72,7 @@ def home():
 
 mainClass.start_sensor_thread()
 mainClass.activate_power_led()
-app.run(debug=True, port=mainClass.web_port_number, host='0.0.0.0')
+app.run(debug=False, port=mainClass.web_port_number, host='0.0.0.0')
 print('Killing program....')
 mainClass.log.debug('Web interface keyboard interruption')
 mainClass.end_sensor_thread()
