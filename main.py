@@ -67,7 +67,7 @@ class MainClass:
             self.pumps.water_plants(pump_index)
 
     def check_sprinkler(self):
-        for pump in self.pumps:
+        for pump in self.pumps.pumps:
             readout_sensor = self.moistureSensors.get_last_readout(pump.sensor)
             pump_sensor_threshold = pump.sensor_threshold
             self.log.debug('check_sprinkler: Iterating pumps: pump {} , readout is {}, threshold is {}'.format(
