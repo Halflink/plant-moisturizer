@@ -19,6 +19,8 @@ class JsonHandler:
             self.spi_bus = init_info['SPI']['Device Bus']
             self.spi_device = init_info['SPI']['Device']
             self.spi_readout_history_length = init_info['SPI']['Readout history length']
+            self.spi_readout_interval = init_info['SPI']['Readout interval']
+            self.spi_graph_interval = init_info['SPI']['Graph interval']
             self.power_led_gpio = init_info['Power LED GPIO']
 
     def print_settings(self):

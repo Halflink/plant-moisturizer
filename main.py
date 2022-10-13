@@ -49,6 +49,8 @@ class MainClass:
         self.humiditySensor = self.HumiditySensor(log_name=self.log_name, dht_pin=json_handler.humidity_sensor_gpio)
         self.sensor_thread = self.threading.Thread(target=self.sensor_thread_function, args=("sensor thread",
                                                                                              self.stop_thread_event))
+        self.readout_interval = json_handler.spi_readout_interval
+        self.graph_interval = json_handler.spi_graph_interval
 
         # Set web port number
         self.web_port_number = json_handler.web_port_number
@@ -66,6 +68,13 @@ class MainClass:
         if 0 <= pump_index < self.relayHat.length():
             self.relayHat.water_plants(pump_index)
 
+    def check_time_difference(self, time_stamp_1, time_stamp_2, interval):
+        if time_stamp_1 is None or time_stamp_2 is None:
+            return True
+        else:
+            time_stamp = time_stamp_1 + self.datetime.timedelta(seconds=interval)
+            return time_stamp < time_stamp_2
+
     def check_sprinkler(self):
         for pump in self.relayHat.pumps:
             readout_sensor = self.moistureSensors.get_last_readout(pump.sensor)
@@ -73,16 +82,9 @@ class MainClass:
             self.log.debug('check_sprinkler: Iterating pumps: pump {} , readout is {}, threshold is {}'.format(
                 pump.pump_id, readout_sensor, pump_sensor_threshold))
             if readout_sensor <= pump_sensor_threshold:
-                self.log.debug('check_sprinkler: check last run')
-                if pump.last_run_datetime is None:
-                    self.log.debug('check_sprinkler: last run was none')
+                current_datetime = self.datetime.datetime.now()
+                if self.check_time_difference(pump.last_run_datetime, current_datetime, pump.sprinkler_interval):
                     pump.water_plants()
-                else:
-                    next_run = pump.last_run_datetime + self.datetime.timedelta(seconds=pump.sprinkler_interval)
-                    current_datetime = self.datetime.datetime.now()
-                    self.log.debug('check_sprinkler: next run at {}, current date time is {}'.format(next_run, current_datetime))
-                    if current_datetime > next_run:
-                        pump.water_plants()
 
     def pump_test(self):
         while True:

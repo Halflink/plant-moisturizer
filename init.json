@@ -41,7 +41,11 @@
 		"Device Bus": 0,
         "Device": 0,
         "Readout history length": 5,
-		"__Commnent": "x number of last measurements are shown in graph"
+		"__Comment": "x number of last measurements are shown in graph",
+		"Readout interval": 600,
+		"___Comment": "Interval between measurements",
+		"Graph interval": 3600,
+		"____Comment": "Interval between points on graph"
 	},
 	"Power LED GPIO": 26
 }
