@@ -31,7 +31,7 @@
 	},
 	"Logging": {
 		"Log path": "../log/",
-		"Log level": 10,
+		"Log level": 20,
 		"__Comment": "log levels are: CRITICAL > 50, ERROR > 40, WARNING > 30, INFO > 20, DEBUG > 10"
 	},
 	"Humidity Sensor GPIO": 4,
