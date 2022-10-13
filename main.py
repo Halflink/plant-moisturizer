@@ -78,7 +78,7 @@ class MainClass:
                     self.log.debug('check_sprinkler: last run was none')
                     pump.water_plants()
                 else:
-                    next_run = pump.last_run_datetime + self.datetime.timedelta(seconds=3600)
+                    next_run = pump.last_run_datetime + self.datetime.timedelta(seconds=pump.sprinkler_interval)
                     current_datetime = self.datetime.datetime.now()
                     self.log.debug('check_sprinkler: next run at {}, current date time is {}'.format(next_run, current_datetime))
                     if current_datetime > next_run:

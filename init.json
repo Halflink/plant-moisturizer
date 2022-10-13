@@ -13,7 +13,7 @@
 			{
 				"ID": 2,
 				"Pump time": 10,
-				"Sprinkler interval": 3600,
+				"Sprinkler interval": 36,
 				"Sensor": 1,
 				"Sensor threshold": 50
 			},
