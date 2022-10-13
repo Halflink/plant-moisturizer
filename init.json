@@ -8,40 +8,40 @@
 				"Pump time": 10,
 				"Sprinkler interval": 3600,
 				"Sensor": 0,
-				"Sensor threshold": 50
+				"Sensor threshold": 50,
+				"__Comment": "Sensor measurement range is between 0-100"
 			},
 			{
 				"ID": 2,
 				"Pump time": 10,
 				"Sprinkler interval": 3600,
 				"Sensor": 1,
-				"Sensor threshold": 50
+				"Sensor threshold": 50,
+				"__Comment": "Sensor measurement range is between 0-100"
 			},
 			{
 				"ID": 3,
 				"Pump time": 10,
 				"Sprinkler interval": 3600,
 				"Sensor": 2,
-				"Sensor threshold": 50
+				"Sensor threshold": 50,
+				"__Comment": "Sensor measurement range is between 0-100"
 			}
 		]
 	},
 	"Logging": {
-		"Log path": "./log/",
+		"Log path": "../log/",
 		"Log level": 10,
-		"__log level list": [
-			"CRITICAL", 50,
-			"ERROR", 40,
-			"WARNING", 30,
-			"INFO", 20,
-			"DEBUG", 10]
+		"__Comment": "log levels are: CRITICAL > 50, ERROR > 40, WARNING > 30, INFO > 20, DEBUG > 10"
 	},
 	"Humidity Sensor GPIO": 4,
 	"Web port number": 5001,
+	"__Comment": "Port number must be 5000 or higher",
 	"SPI": {
 		"Device Bus": 0,
         "Device": 0,
-        "Readout history length": 5
+        "Readout history length": 5,
+		"__Commnent": "x number of last measurements are shown in graph"
 	},
 	"Power LED GPIO": 26
 }
