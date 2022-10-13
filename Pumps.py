@@ -37,7 +37,9 @@ class Pumps:
         def water_plants(self):
             if self.last_run_datetime is not None:
                 last_run = self.last_run_datetime.strftime("%d-%m-%Y, %H:%M:%S")
-                self.log.info('Last run pump {} is at {}'.format(self.pump_id, last_run))
+                self.log.info('water_plants: Last run pump {} is at {}'.format(self.pump_id, last_run))
+            else:
+                self.log.info('water_plants: first time running pump {}'.format(self.pump_id))
             self.start_pump()
             self.time.sleep(self.pump_time)
             self.stop_pump()
