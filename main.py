@@ -50,7 +50,6 @@ class MainClass:
         self.sensor_thread = self.threading.Thread(target=self.sensor_thread_function, args=("sensor thread",
                                                                                              self.stop_thread_event))
         self.readout_interval = json_handler.spi_readout_interval
-        self.graph_interval = json_handler.spi_graph_interval
 
         # Set web port number
         self.web_port_number = json_handler.web_port_number
@@ -82,8 +81,8 @@ class MainClass:
             self.log.debug('check_sprinkler: Iterating pumps: pump {} , readout is {}, threshold is {}'.format(
                 pump.pump_id, readout_sensor, pump_sensor_threshold))
             if readout_sensor <= pump_sensor_threshold:
-                current_datetime = self.datetime.datetime.now()
-                if self.check_time_difference(pump.last_run_datetime, current_datetime, pump.sprinkler_interval):
+                if self.check_time_difference(pump.last_run_datetime, self.datetime.datetime.now(),
+                                              pump.sprinkler_interval):
                     pump.water_plants()
 
     def pump_test(self):
@@ -97,15 +96,16 @@ class MainClass:
                 print('Quit the Loop')
                 self.sys.exit()
 
-    def sensor_thread_function(self, thread_name, stop_thread_event,):
+    def sensor_thread_function(self, thread_name, stop_thread_event, ):
         self.log.debug('Initializing ' + thread_name)
+        last_readout_datetime = None
         try:
             while True:
-                self.moistureSensors.write_sensor_read_out()
-                self.humiditySensor.write_sensor_read_out()
-                time.sleep(10)
+                if self.check_time_difference(last_readout_datetime, self.datetime.datetime.now(),
+                                              self.readout_interval):
+                    self.moistureSensors.write_sensor_read_out()
+                    self.humiditySensor.write_sensor_read_out()
                 if self.auto_sprinkling:
-                    self.log.debug('sensor_thread_function: auto sprinkling is on, check sprinkler')
                     self.check_sprinkler()
                 if stop_thread_event.is_set():
                     self.log.debug('sensor_thread_function: Sensor thread is stopped')
