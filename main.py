@@ -22,11 +22,53 @@ class MainClass:
     class PowerLed:
 
         def __init__(self, GPIO, led_gpio):
+            self.GPIO = GPIO
             self.red_gpio = led_gpio[0]
             self.green_gpio = led_gpio[1]
             self.blue_gpio = led_gpio[2]
+            self.GPIO.setmode(GPIO.BCM)
+            self.GPIO.setup(self.red_gpio, self.GPIO.OUT)
+            self.GPIO.setup(self.green_gpio, self.GPIO.OUT)
+            self.GPIO.setup(self.blue_gpio, self.GPIO.OUT)
 
+        def led_off(self):
+            rgb = [False, False, False]
+            self.led_set(rgb)
 
+        def led_set(self, rgb):
+            if rgb is not None:
+                if rgb[0]:
+                    self.GPIO.output(self.red_gpio, self.GPIO.LOW)
+                else:
+                    self.GPIO.output(self.red_gpio, self.GPIO.HIGH)
+
+                if rgb[1]:
+                    self.GPIO.output(self.green_gpio, self.GPIO.LOW)
+                else:
+                    self.GPIO.output(self.green_gpio, self.GPIO.HIGH)
+
+                if rgb[2]:
+                    self.GPIO.output(self.blue_gpio, self.GPIO.LOW)
+                else:
+                    self.GPIO.output(self.blue_gpio, self.GPIO.HIGH)
+
+        def led_on(self, colour):
+            rgb = None
+            if colour == 'RED':
+                rgb = [True, False, False]
+            elif colour == 'GREEN':
+                rgb = [False, True, False]
+            elif colour == 'BLUE':
+                rgb = [False, False, True]
+            elif colour == 'CYAN':
+                rgb = [False, True, True]
+            elif colour == 'MAGNENTA':
+                rgb = [True, False, True]
+            elif colour == 'YELLOW':
+                rgb = [True, True, False]
+            else:
+                rgb = [False, False, False]
+            self.led_set(rgb)
 
     def __init__(self):
 
@@ -34,9 +76,7 @@ class MainClass:
         json_handler = self.JsonHandler()
 
         # Set power LED
-        self.power_led_gpio = json_handler.power_led_gpio
-        self.GPIO.setmode(self.GPIO.BCM)
-        self.GPIO.setup(self.power_led_gpio, self.GPIO.OUT)
+        self.powerLed = self.PowerLed(self.GPIO, json_handler.rgb_led_gpio)
 
         # Initialize logging. The logger class is only there to initialize pythons logging module
         self.log_name = 'MoisturizerLogging'
@@ -63,11 +103,11 @@ class MainClass:
         # Set web port number
         self.web_port_number = json_handler.web_port_number
 
-    def activate_power_led(self):
-        self.GPIO.output(self.power_led_gpio, self.GPIO.HIGH)
+    def power_led_program_running(self):
+        self.powerLed.led_on("GREEN")
 
     def deactivate_power_led(self):
-        self.GPIO.output(self.power_led_gpio, self.GPIO.LOW)
+        self.powerLed.led_off()
 
     def cleanup_gpio(self):
         self.GPIO.cleanup()
@@ -124,11 +164,15 @@ class MainClass:
         except KeyboardInterrupt as e:
             self.log.debug('Sensor thread keyboard interruption')
             self.moistureSensors.close()
+        except Exception as Argument:
+            self.powerLed.led_set("RED")
+            self.log.exception("Error occurred in sensor thread")
 
     def start_sensor_thread(self):
         self.sensor_thread.start()
 
     def end_sensor_thread(self):
+        self.powerLed.led_on('BLUE')
         self.stop_thread_event.set()
         print('Wait for tread to stop...')
         self.sensor_thread.join()
@@ -136,6 +180,6 @@ class MainClass:
 
 if __name__ == '__main__':
     # If main is started, it will test the sensors and the pumps.
-    mainClass = MainClass(4)
+    mainClass = MainClass()
     mainClass.start_sensor_thread()
     mainClass.pump_test()

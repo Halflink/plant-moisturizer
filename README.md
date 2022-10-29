@@ -24,9 +24,8 @@ To solve this I picked up the idea to create an automated watering system.
 * Browser based interface showing all parameters
 * RGB Led: 
   * Green: application has started
-  * Yellow: application is shutting down
-  * Red: application is down 
-  * Magnenta: application is in error
+  * Blue: application is shutting down
+  * Red: application is in error
 * Shutdown button: starts closing of application and sends shutdown command to OS
 
 ### Pi 4 Model B choice
