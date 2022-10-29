@@ -51,7 +51,7 @@ class Test:
             elif colour == 'Yellow':
                 rgb = [True, True, False]
             else:
-                rgb = [True, True, True]
+                rgb = [False, False, False]
             self.led_set(rgb)
 
     def __init__(self):
@@ -62,18 +62,25 @@ class Test:
 
     def testTest(self):
         self.led.led_on('RED')
-        self.time.sleep(2)
+        print("RED")
+        self.time.sleep(5)
         self.led.led_on('YELLOW')
-        self.time.sleep(2)
+        print("Yellow")
+        self.time.sleep(5)
         self.led.led_on('GREEN')
-        self.time.sleep(2)
+        print("GREEN")
+        self.time.sleep(5)
         self.led.led_on('CYAN')
-        self.time.sleep(2)
+        print("CYAN")
+        self.time.sleep(5)
         self.led.led_on('BLUE')
-        self.time.sleep(2)
+        print("BLUE")
+        self.time.sleep(5)
         self.led.led_on('MAGNENTA')
-        self.time.sleep(2)
-        self.led.led_on('doemaarwa')
+        print("MAGNENTA")
+        self.time.sleep(5)
+        self.led.led_off()
+
 
 
 if __name__ == '__main__':
