@@ -22,19 +22,19 @@ class Test:
         def led_set(self, rgb):
             if rgb is not None:
                 if rgb[0]:
-                    self.GPIO.output(self.red_gpio, self.GPIO.HIGH)
-                else:
                     self.GPIO.output(self.red_gpio, self.GPIO.LOW)
+                else:
+                    self.GPIO.output(self.red_gpio, self.GPIO.HIGH)
 
                 if rgb[1]:
-                    self.GPIO.output(self.green_gpio, self.GPIO.HIGH)
-                else:
                     self.GPIO.output(self.green_gpio, self.GPIO.LOW)
+                else:
+                    self.GPIO.output(self.green_gpio, self.GPIO.HIGH)
 
                 if rgb[2]:
-                    self.GPIO.output(self.blue_gpio, self.GPIO.HIGH)
-                else:
                     self.GPIO.output(self.blue_gpio, self.GPIO.LOW)
+                else:
+                    self.GPIO.output(self.blue_gpio, self.GPIO.HIGH)
 
         def led_on(self, colour):
             rgb = None
