@@ -65,7 +65,7 @@ class Test:
         print("RED")
         self.time.sleep(5)
         self.led.led_on('YELLOW')
-        print("Yellow")
+        print("YELLOW")
         self.time.sleep(5)
         self.led.led_on('GREEN')
         print("GREEN")
