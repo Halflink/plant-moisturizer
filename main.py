@@ -19,6 +19,15 @@ class MainClass:
     stop_thread_event = threading.Event()
     auto_sprinkling = False
 
+    class PowerLed:
+
+        def __init__(self, GPIO, led_gpio):
+            self.red_gpio = led_gpio[0]
+            self.green_gpio = led_gpio[1]
+            self.blue_gpio = led_gpio[2]
+
+
+
     def __init__(self):
 
         # Get settings

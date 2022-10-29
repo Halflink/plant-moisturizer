@@ -45,7 +45,7 @@
 		"Readout interval": 60,
 		"___Comment": "Interval between measurements"
 	},
-	"Power LED GPIO": 26
+	"RGB LED GPIO": [13, 19, 26]
 }
 
 

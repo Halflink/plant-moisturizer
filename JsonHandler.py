@@ -20,7 +20,7 @@ class JsonHandler:
             self.spi_device = init_info['SPI']['Device']
             self.spi_readout_history_length = init_info['SPI']['Readout history length']
             self.spi_readout_interval = init_info['SPI']['Readout interval']
-            self.power_led_gpio = init_info['Power LED GPIO']
+            self.rgb_led_gpio = init_info['RGB LED GPIO']
 
     def print_settings(self):
         print("device_bus: %.1f " % self.device_bus)
@@ -39,7 +39,8 @@ class JsonHandler:
         print("SPI Device Bus: %.0f" % self.spi_bus)
         print("SPI Device: %.0f" % self.spi_device)
         print("SPI Readout history length: %.0f" % self.spi_readout_history_length)
-        print("Power LED GPIO: %0.f" % self.power_led_gpio)
+        for element in range(3):
+            print("RGB LED GPIO: %0.f" % self.rgb_led_gpio[element])
 
 
 if __name__ == '__main__':
