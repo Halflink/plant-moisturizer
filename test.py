@@ -48,7 +48,7 @@ class Test:
                 rgb = [False, True, True]
             elif colour == 'MAGNENTA':
                 rgb = [True, False, True]
-            elif colour == 'Yellow':
+            elif colour == 'YELLOW':
                 rgb = [True, True, False]
             else:
                 rgb = [False, False, False]
