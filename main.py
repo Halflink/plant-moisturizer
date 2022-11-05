@@ -162,11 +162,12 @@ class MainClass:
                     self.log.debug('sensor_thread_function: Sensor thread is stopped')
                     break
         except KeyboardInterrupt as e:
-            self.log.debug('Sensor thread keyboard interruption')
+            self.log.info('Sensor thread keyboard interruption')
             self.moistureSensors.close()
         except Exception as e:
             self.powerLed.led_set("RED")
             self.log.exception("Error occurred in sensor thread")
+            self.log.exception(e)
 
     def start_sensor_thread(self):
         self.sensor_thread.start()
