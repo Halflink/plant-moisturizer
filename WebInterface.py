@@ -70,18 +70,14 @@ def home():
                            auto_onoff=auto_onoff)
 
 
-try:
-    mainClass.start_sensor_thread()
-    mainClass.power_led_program_running()
-    app.run(debug=False, port=mainClass.web_port_number, host='0.0.0.0')
-    print('Killing program....')
-    mainClass.log.debug('Web interface keyboard interruption')
-    mainClass.end_sensor_thread()
-    mainClass.moistureSensors.close()
-    mainClass.deactivate_power_led()
-    mainClass.cleanup_gpio()
-except Exception as Argument:
-    mainClass.powerLed.led_set("RED")
-    mainClass.log.exception("Error occurred web running")
+mainClass.start_sensor_thread()
+mainClass.power_led_program_running()
+app.run(debug=False, port=mainClass.web_port_number, host='0.0.0.0')
+print('Killing program....')
+mainClass.log.debug('Web interface keyboard interruption')
+mainClass.end_sensor_thread()
+mainClass.moistureSensors.close()
+mainClass.deactivate_power_led()
+mainClass.cleanup_gpio()
 
 
